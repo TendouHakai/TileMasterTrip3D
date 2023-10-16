@@ -59,7 +59,6 @@ public class Cowboy : MonoBehaviour
             
             yield return new WaitForSeconds(speedSpawn);
         }
-        Debug.Log("run");
         stopSpawn();
     }
 

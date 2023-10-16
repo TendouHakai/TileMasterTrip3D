@@ -110,4 +110,53 @@ public class SlotManager : MonoBehaviour
         tiles.Add(tile);
         updateTilePosition(i);
     }
+
+    // remove tile
+
+    public bool isCanRemove()
+    {
+        return tiles.Count != 0;
+    }
+
+    public void Remove()
+    {
+        tiles[tiles.Count - 1].MoveTo(new Vector3(Random.Range(-2.7f, 2.7f), 0, Random.Range(-3.5f, 3.5f)), 20f, false);
+        tiles.RemoveAt(tiles.Count - 1);
+    }
+
+    // Add guide
+
+    public bool isContain(Tile tile)
+    {
+        return tiles.Contains(tile);    
+    }
+
+    public void addGuide()
+    {
+        if(tiles.Count == 0) return;
+        int index = 0;
+        bool flag = false;
+
+        for(int i =1; i<tiles.Count; ++i)
+        {
+            if (tiles[index].ID == tiles[i].ID)
+            {
+                flag = true;
+                break;
+            }
+            else
+            {
+                index = i;
+            }
+        }
+
+        if(flag == true)
+        {
+            SpawnManager.getInstance().addTileToSlot(tiles[index].ID, 1);
+        }
+        else
+        {
+            SpawnManager.getInstance().addTileToSlot(tiles[0].ID, 2);
+        }
+    }
 }

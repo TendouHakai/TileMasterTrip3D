@@ -19,7 +19,8 @@ public class Tile : MonoBehaviour
     float speed = 2f;
     float startTime = 0f;
     float distance = 0f;
-    bool isOnSlot = false;
+    public bool isOnSlot = false;
+    bool isToSlot = false;
     Vector3 startMarker;
     Vector3 endMarker;
 
@@ -61,14 +62,21 @@ public class Tile : MonoBehaviour
 
             if (Vector3.Distance(this.transform.position, endMarker) <= 0.01f)
             {
-                Debug.Log("stopmove");
-                isOnSlot = true;
-                isMove = false;
-                if (isUpdateSlotManager)
+                if(isToSlot)
                 {
-                    SlotManager.getInstance().deleteChain();
-                    isUpdateSlotManager = false;
+                    isOnSlot = true;
+                    isMove = false;
+                    if (isUpdateSlotManager)
+                    {
+                        SlotManager.getInstance().deleteChain();
+                        isUpdateSlotManager = false;
+                    }
                 }
+                else
+                {
+                    isMove = false;
+                }
+
             }
         }
 
@@ -101,7 +109,7 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void MoveTo(Vector3 pos, float speed)
+    public void MoveTo(Vector3 pos, float speed, bool isToSlot = true)
     {
         if (pos == Vector3.zero) return;
         this.speed = speed;
@@ -110,6 +118,8 @@ public class Tile : MonoBehaviour
         startTime = Time.time;
         distance = Vector3.Distance(startMarker, endMarker);
         isMove = true;
+        isOnSlot = false;
+        this.isToSlot = isToSlot;
     }
 
     public void Select()

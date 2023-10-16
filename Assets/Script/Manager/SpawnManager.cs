@@ -63,4 +63,21 @@ public class SpawnManager : MonoBehaviour
     {
         tiles.Remove(tile);
     }
+
+    // add tile to Slot
+    public void addTileToSlot(int ID, int n)
+    {
+        for(int i =0; i<tiles.Count; i++)
+        {
+            if (tiles[i].ID == ID)
+            {
+                if (!SlotManager.getInstance().isContain(tiles[i]))
+                {
+                    SlotManager.getInstance().addTile(tiles[i]);
+                    n--;
+                }
+            }
+            if (n <= 0) return;
+        }
+    }
 }

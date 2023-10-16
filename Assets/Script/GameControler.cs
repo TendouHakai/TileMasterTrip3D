@@ -22,7 +22,7 @@ public class GameControler : MonoBehaviour
             OnTouch(Input.GetTouch(0).position);
         }
 
-        if (Input.touchCount ==0 && isTouch == true)
+        if (Input.touchCount == 0 && isTouch == true)
         {
             isTouch = false;
             if (raycastHit.transform != null && raycastHit.transform.tag == "Tile")
