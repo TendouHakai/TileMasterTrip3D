@@ -61,9 +61,10 @@ public class SlotManager : MonoBehaviour
         if (index == -1) return;
         for (int i = 0; i < 3; i++)
         {
-            Destroy(tiles[index].gameObject);
+            tiles[index].remove();
             tiles.RemoveAt(index);
         }
+        HUBManger.getInstance().createStar(index);
         updateTilePosition(index, false);
     }
 

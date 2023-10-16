@@ -54,6 +54,8 @@ public class Cowboy : MonoBehaviour
                 vec.z = Mathf.Sin((angle + 90f) * Mathf.Deg2Rad);
                 tile.body.AddForce(vec * force, ForceMode.Impulse);
             }
+
+            SpawnManager.getInstance().addTile(tile);
             
             yield return new WaitForSeconds(speedSpawn);
         }

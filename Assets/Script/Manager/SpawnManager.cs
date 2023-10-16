@@ -53,4 +53,14 @@ public class SpawnManager : MonoBehaviour
     {
         return listTileID[index];
     }
+    
+    public void addTile(Tile tile)
+    {
+        tiles.Add(tile);
+    }
+
+    public void removeTile(Tile tile)
+    {
+        tiles.Remove(tile);
+    }
 }

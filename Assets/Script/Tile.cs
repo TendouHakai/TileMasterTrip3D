@@ -11,7 +11,9 @@ public class Tile : MonoBehaviour
     [SerializeField] MeshRenderer render;
     [SerializeField] public Rigidbody body;
     [SerializeField] Outline outline;
-    
+    [Header("---------Component-----------")]
+    [SerializeField] GameObject effectFrefabs;
+
     bool isFaceUp = false;
     bool isMove = false;
     float speed = 2f;
@@ -20,6 +22,8 @@ public class Tile : MonoBehaviour
     bool isOnSlot = false;
     Vector3 startMarker;
     Vector3 endMarker;
+
+    bool isRemove = false;
 
     bool isSelect = false;
 
@@ -123,5 +127,14 @@ public class Tile : MonoBehaviour
     public bool IsMove()
     {
         return isMove;
+    }
+
+    public void remove()
+    {
+        isRemove = true;
+        GameObject effect = Instantiate(effectFrefabs, this.transform.position, Quaternion.identity);
+        Destroy(effect, 0.5f);
+        SpawnManager.getInstance().removeTile(this);
+        Destroy(this.gameObject);
     }
 }
