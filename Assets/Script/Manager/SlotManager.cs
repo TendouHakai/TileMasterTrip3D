@@ -90,8 +90,6 @@ public class SlotManager : MonoBehaviour
         return -1;
     }
 
-
-
     public void addTile(Tile tile)
     {
         if (tiles.Count == n) return;
@@ -111,6 +109,17 @@ public class SlotManager : MonoBehaviour
         updateTilePosition(i);
     }
 
+    public void clear()
+    {
+        for(int i =0; i < tiles.Count; ++i)
+        {
+            tiles.RemoveAt(i);
+            i--;
+        }
+
+        n = 7;
+    }
+
     // remove tile
 
     public bool isCanRemove()
@@ -118,10 +127,13 @@ public class SlotManager : MonoBehaviour
         return tiles.Count != 0;
     }
 
-    public void Remove()
+    public void Remove(int n =1)
     {
-        tiles[tiles.Count - 1].MoveTo(new Vector3(Random.Range(-2.7f, 2.7f), 0, Random.Range(-3.5f, 3.5f)), 20f, false);
-        tiles.RemoveAt(tiles.Count - 1);
+        for(int i =0; i<n; i++)
+        {
+            tiles[tiles.Count - 1].MoveTo(new Vector3(Random.Range(-2.7f, 2.7f), 0, Random.Range(-3.5f, 3.5f)), 20f, false);
+            tiles.RemoveAt(tiles.Count - 1);
+        }
     }
 
     // Add guide

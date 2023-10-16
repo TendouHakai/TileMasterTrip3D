@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -27,13 +28,13 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
-        loadLevel(1);
+        loadLevel(HUBManger.getInstance().level);
     }
 
     public void loadLevel(int ID)
     {
         currentLevel = LevelConfigs.getInstance().getConfig(ID);
-        listTileID.Clear();
+        clear();
         // create list ID
         foreach (TileInLevel tile in currentLevel.tileInLevels)
         {
@@ -43,7 +44,22 @@ public class SpawnManager : MonoBehaviour
             }
         }
 
+        HUBManger.getInstance().starInLevel = 0;
+        HUBManger.getInstance().startTime();
+
         cowboy.startAni();
+    }
+
+    public void clear()
+    {
+        for(int i =0; i<tiles.Count; i++)
+        {
+            Destroy(tiles[i].gameObject);
+            tiles.RemoveAt(i);
+            i--;
+        }
+
+        listTileID.Clear();
     }
 
     public bool IsSpawn(int index)
@@ -67,7 +83,8 @@ public class SpawnManager : MonoBehaviour
         tiles.Remove(tile);
         if(tiles.Count <= 0)
         {
-            loadLevel(currentLevel.ID + 1);
+            HUBManger.getInstance().level++;
+            UIPlaySceneManager.getInstance().congratulateMenu.SetActive(true);
         }
     }
 

@@ -4,7 +4,23 @@ using UnityEngine;
 
 public class GameControler : MonoBehaviour
 {
+    private static GameControler instance;
+    public static GameControler getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new GameControler();
+        }
+        return instance;
+    }
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     bool isTouch;
+    bool isPause;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,20 +32,23 @@ public class GameControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount >= 1 && isTouch == false)
+        if(!isPause)
         {
-            isTouch = true;
-            OnTouch(Input.GetTouch(0).position);
-        }
-
-        if (Input.touchCount == 0 && isTouch == true)
-        {
-            isTouch = false;
-            if (raycastHit.transform != null && raycastHit.transform.tag == "Tile")
+            if (Input.touchCount >= 1 && isTouch == false)
             {
-                raycastHit.transform.GetComponent<Tile>().Unselect();
+                isTouch = true;
+                OnTouch(Input.GetTouch(0).position);
             }
-        }
+
+            if (Input.touchCount == 0 && isTouch == true)
+            {
+                isTouch = false;
+                if (raycastHit.transform != null && raycastHit.transform.tag == "Tile")
+                {
+                    raycastHit.transform.GetComponent<Tile>().Unselect();
+                }
+            }
+        }    
     }
 
     void OnTouch(Vector3 position)
@@ -44,5 +63,15 @@ public class GameControler : MonoBehaviour
             }
         }
 
+    }
+
+    public void Pause()
+    {
+        isPause = true;
+    }
+
+    public void Resume()
+    {
+        isPause = false;
     }
 }

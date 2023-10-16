@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIMainSceneManager : MonoBehaviour
 {
@@ -14,5 +15,10 @@ public class UIMainSceneManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnPlayBtnClick()
+    {
+        SceneManager.LoadScene(1);
     }
 }

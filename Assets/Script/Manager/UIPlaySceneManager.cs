@@ -19,6 +19,23 @@ public class UIPlaySceneManager : MonoBehaviour
         instance = this;
     }
 
+    [Header("--------------COMPONENT----------------")]
+    [SerializeField] public GameObject pauseMenu;
+    [SerializeField] public GameObject timeOutMenu;
+    [SerializeField] public GameObject outOfSlotMenu;
+    [SerializeField] public GameObject congratulateMenu;
+    [SerializeField] public GameObject playLevelMenu;
+
+
+    void Start()
+    {
+        pauseMenu.SetActive(false);
+        timeOutMenu.SetActive(false);
+        outOfSlotMenu.SetActive(false);
+        congratulateMenu.SetActive(false);
+        playLevelMenu.SetActive(false);
+    }
+
     public void OnRemoveBtnClick()
     {
         Debug.Log("run");
@@ -32,5 +49,26 @@ public class UIPlaySceneManager : MonoBehaviour
     public void OnGuideBtnClick()
     {
         SlotManager.getInstance().addGuide();
+    }
+
+    // pause menu
+
+    public void OnSettingBtn()
+    {
+        pauseMenu.SetActive(true);
+        GameControler.getInstance().Pause();
+    }
+
+    public void OnClosePauseMenu()
+    {
+        pauseMenu.SetActive(false);
+        GameControler.getInstance().Resume();
+    }
+
+    //Time out Menu
+    public void OpenTimeOutMenu()
+    {
+        timeOutMenu.SetActive(true);
+        GameControler.getInstance().Pause();
     }
 }

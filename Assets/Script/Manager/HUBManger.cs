@@ -24,16 +24,21 @@ public class HUBManger : MonoBehaviour
     [Header("--------------INFO HUB----------------")]
     public bool isplayScene = false;
 
-    [SerializeField] int enegy = 0;
-    [SerializeField] int star = 0;
-    [SerializeField] int coin = 0;
-    [SerializeField] float time = 900;
-    [SerializeField] int level = 1;
+    [SerializeField] public int enegy = 0;
+    [SerializeField] public int star = 0;
+    [SerializeField] public int starInLevel = 0;
+    [SerializeField] public int coin = 0;
+    [SerializeField] public float time = 900;
+    [SerializeField] public float TIME_MAX = 900;
+    [SerializeField] public int level = 1;
     [SerializeField] int combo = 0;
     // time combo
     float timeComboStart = 0f;
     float timeCombo = 5f;
     bool isCombo = false;
+
+    // time count
+    bool isTiming = true;
     [Header("---------Component-----------")]
     [SerializeField] TextMeshProUGUI enegyText;
     [SerializeField] TextMeshProUGUI starText;
@@ -56,6 +61,8 @@ public class HUBManger : MonoBehaviour
             TimeText.text = time.ToString();
             LevelText.text = "Level" + level.ToString();
             slider.gameObject.SetActive(false);
+
+            TIME_MAX = time;
         }
         else
         {
@@ -71,11 +78,20 @@ public class HUBManger : MonoBehaviour
     {
         if(isplayScene)
         {
-            if (time > 0)
+            if(isTiming)
             {
-                time -= Time.deltaTime;
-                TimeText.text = getTimeText();
+                if (time > 0)
+                {
+                    time -= Time.deltaTime;
+                    TimeText.text = getTimeText();
+                }
+                else
+                {
+                    isTiming = false;
+                    UIPlaySceneManager.getInstance().OpenTimeOutMenu();
+                }
             }
+            
             if (isCombo)
             {
                 if (timeComboStart > timeCombo)
@@ -107,6 +123,7 @@ public class HUBManger : MonoBehaviour
     public void addStar(int n)
     {
         this.star += n;
+        this.starInLevel += n;
         starText.text = this.star.ToString();
     }
 
@@ -148,5 +165,17 @@ public class HUBManger : MonoBehaviour
     public int getCombo()
     {
         return combo;
+    }
+
+    public void addTime()
+    {
+        time += 5 * 60;
+        isTiming = true;
+    }
+
+    public void startTime()
+    {
+        time = TIME_MAX;
+        isTiming = true;
     }
 }
