@@ -21,17 +21,23 @@ public class HUBManger : MonoBehaviour
     {
         instance = this;
     }
+    [Header("--------------INFO HUB----------------")]
+    public bool isplayScene = false;
 
-    int star = 0;
-    float time = 900;
-    int level = 1;
-    int combo = 0;
+    [SerializeField] int enegy = 0;
+    [SerializeField] int star = 0;
+    [SerializeField] int coin = 0;
+    [SerializeField] float time = 900;
+    [SerializeField] int level = 1;
+    [SerializeField] int combo = 0;
     // time combo
     float timeComboStart = 0f;
     float timeCombo = 5f;
     bool isCombo = false;
     [Header("---------Component-----------")]
+    [SerializeField] TextMeshProUGUI enegyText;
     [SerializeField] TextMeshProUGUI starText;
+    [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI TimeText;
     [SerializeField] TextMeshProUGUI LevelText;
     [SerializeField] Slider slider;
@@ -44,33 +50,50 @@ public class HUBManger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        starText.text = star.ToString();
-        TimeText.text = time.ToString();
-        LevelText.text = "Level" + level.ToString();
-        slider.gameObject.SetActive(false);
+        if (isplayScene)
+        {
+            starText.text = star.ToString();
+            TimeText.text = time.ToString();
+            LevelText.text = "Level" + level.ToString();
+            slider.gameObject.SetActive(false);
+        }
+        else
+        {
+            enegyText.text = enegy.ToString();
+            starText.text = star.ToString();
+            coinText.text = coin.ToString();
+            LevelText.text = level.ToString();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(time > 0)
+        if(isplayScene)
         {
-            time-=Time.deltaTime;
-            TimeText.text = getTimeText();
+            if (time > 0)
+            {
+                time -= Time.deltaTime;
+                TimeText.text = getTimeText();
+            }
+            if (isCombo)
+            {
+                if (timeComboStart > timeCombo)
+                {
+                    combo = 0;
+                    slider.gameObject.SetActive(false);
+                    isCombo = false;
+                }
+                else
+                {
+                    slider.value = (timeCombo - timeComboStart) / timeCombo;
+                    timeComboStart += Time.deltaTime;
+                }
+            }
         }
-        if(isCombo)
+        else
         {
-            if (timeComboStart > timeCombo)
-            {
-                combo = 0;
-                slider.gameObject.SetActive(false);
-                isCombo = false;
-            }
-            else
-            {
-                slider.value = (timeCombo - timeComboStart) / timeCombo;
-                timeComboStart += Time.deltaTime;
-            }
+
         }
     }
 

@@ -23,6 +23,8 @@ public class SpawnManager : MonoBehaviour
     List<Tile> tiles = new List<Tile>();
     List<int> listTileID = new List<int>();
 
+    [SerializeField] Cowboy cowboy;
+
     private void Start()
     {
         loadLevel(1);
@@ -31,7 +33,6 @@ public class SpawnManager : MonoBehaviour
     public void loadLevel(int ID)
     {
         currentLevel = LevelConfigs.getInstance().getConfig(ID);
-        Debug.Log(currentLevel);
         listTileID.Clear();
         // create list ID
         foreach (TileInLevel tile in currentLevel.tileInLevels)
@@ -41,6 +42,8 @@ public class SpawnManager : MonoBehaviour
                 listTileID.Add(tile.IDTile);
             }
         }
+
+        cowboy.startAni();
     }
 
     public bool IsSpawn(int index)
@@ -62,6 +65,10 @@ public class SpawnManager : MonoBehaviour
     public void removeTile(Tile tile)
     {
         tiles.Remove(tile);
+        if(tiles.Count <= 0)
+        {
+            loadLevel(currentLevel.ID + 1);
+        }
     }
 
     // add tile to Slot

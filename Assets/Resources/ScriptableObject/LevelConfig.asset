@@ -17,6 +17,13 @@ MonoBehaviour:
     Name: Map01
     tileInLevels:
     - IDTile: 0
-      count: 20
+      count: 3
     - IDTile: 1
-      count: 20
+      count: 3
+  - ID: 2
+    Name: Map02
+    tileInLevels:
+    - IDTile: 0
+      count: 6
+    - IDTile: 1
+      count: 6

@@ -62,6 +62,14 @@ public class Cowboy : MonoBehaviour
         stopSpawn();
     }
 
+    // Next Level
+    public void startAni()
+    {
+        ani.Play("CowboyBeginAni");
+    }
+
+    // event Animation
+
     public void startSpawn()
     {
         wall.SetActive(true);
