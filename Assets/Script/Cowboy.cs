@@ -13,6 +13,7 @@ public class Cowboy : MonoBehaviour
     [SerializeField] Transform SpawnPoint;
     [SerializeField] Tile Tilefrefabs;
 
+    int index;
     Coroutine SpawnCoroutine;
     public float speedSpawn = 0.01f;
     bool isStartCircular = false;
@@ -26,6 +27,7 @@ public class Cowboy : MonoBehaviour
 
     void Start()
     {
+        index = 0;
     }
 
     // Update is called once per frame
@@ -36,9 +38,11 @@ public class Cowboy : MonoBehaviour
 
     public IEnumerator Spawning()
     {
-        for(int i =0; i<n; i++)
+        Debug.Log(SpawnManager.getInstance());
+        while(SpawnManager.getInstance().IsSpawn(index))
         {
             Tile tile = Instantiate(Tilefrefabs, SpawnPoint.position, Quaternion.identity);
+            tile.ID = SpawnManager.getInstance().SpawnID(index++);
 
             if (isStartCircular)
             {
@@ -50,9 +54,10 @@ public class Cowboy : MonoBehaviour
                 vec.z = Mathf.Sin((angle + 90f) * Mathf.Deg2Rad);
                 tile.body.AddForce(vec * force, ForceMode.Impulse);
             }
-
+            
             yield return new WaitForSeconds(speedSpawn);
         }
+        Debug.Log("run");
         stopSpawn();
     }
 
@@ -71,6 +76,7 @@ public class Cowboy : MonoBehaviour
     {
         StopCoroutine(SpawnCoroutine);
         isStartCircular = false;
+        index = 0;
         ani.Play("CowboyEndAni");
     }
 

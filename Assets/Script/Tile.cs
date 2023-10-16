@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
     [Header("---------ID-----------")]
-    [SerializeField] int ID;
+    [SerializeField] public int ID;
     [Header("---------Component-----------")]
     [SerializeField] MeshRenderer render;
     [SerializeField] public Rigidbody body;
@@ -13,10 +14,16 @@ public class Tile : MonoBehaviour
     
     bool isFaceUp = false;
     bool isMove = false;
+    float speed = 2f;
     float startTime = 0f;
     float distance = 0f;
     bool isOnSlot = false;
-    Vector3 destination;
+    Vector3 startMarker;
+    Vector3 endMarker;
+
+    bool isSelect = false;
+
+    public bool isUpdateSlotManager = false;
     void Start()
     {
         TileConfig config = TileConfigs.getInstance().getConfig(ID);
@@ -38,27 +45,40 @@ public class Tile : MonoBehaviour
         if(isMove)
         {
             Quaternion vec = transform.rotation;
-            vec.y = 0;
+            vec.y = 180;
             vec.z = 0;
             vec.x = 0;
             this.transform.rotation = Quaternion.Lerp(transform.rotation, vec, Time.time * 0.01f);
 
-            float distCovered = (Time.time - startTime) * 2f;
+            float distCovered = (Time.time - startTime) * speed;
             float fractionOfJourney = distCovered / distance;
 
-            this.transform.position = Vector3.Lerp(transform.position, destination, fractionOfJourney);
+            this.transform.position = Vector3.Lerp(startMarker, endMarker, fractionOfJourney);
 
-            if (Vector3.Distance(this.transform.position, destination) <=0.1f)
+            if (Vector3.Distance(this.transform.position, endMarker) <= 0.01f)
             {
+                Debug.Log("stopmove");
                 isOnSlot = true;
                 isMove = false;
+                if (isUpdateSlotManager)
+                {
+                    SlotManager.getInstance().deleteChain();
+                    isUpdateSlotManager = false;
+                }
             }
         }
 
         if (isOnSlot)
         {
-            this.transform.position = destination;
-            this.transform.rotation = Quaternion.Euler(0, 0, 0);
+            this.transform.position = endMarker;
+            this.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+
+        if(isSelect)
+        {
+            Vector3 pos = this.transform.position;
+            pos.y = -0.5f;
+            this.transform.position = pos;
         }
     }
 
@@ -77,12 +97,31 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void MoveTo(Vector3 pos)
+    public void MoveTo(Vector3 pos, float speed)
     {
         if (pos == Vector3.zero) return;
-        destination = pos;
+        this.speed = speed;
+        startMarker = this.transform.position;
+        endMarker = pos;
         startTime = Time.time;
-        distance = Vector3.Distance(this.transform.position, destination);
+        distance = Vector3.Distance(startMarker, endMarker);
         isMove = true;
+    }
+
+    public void Select()
+    {
+        isSelect = true;
+        outline.enabled = true;
+    }
+
+    public void Unselect()
+    {
+        isSelect = false;
+        outline.enabled = false;
+    }
+
+    public bool IsMove()
+    {
+        return isMove;
     }
 }

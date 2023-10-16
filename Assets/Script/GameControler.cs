@@ -25,9 +25,9 @@ public class GameControler : MonoBehaviour
         if (Input.touchCount ==0 && isTouch == true)
         {
             isTouch = false;
-            if (raycastHit.transform.tag == "Tile")
+            if (raycastHit.transform != null && raycastHit.transform.tag == "Tile")
             {
-                raycastHit.transform.GetComponent<Outline>().enabled = false;
+                raycastHit.transform.GetComponent<Tile>().Unselect();
             }
         }
     }
@@ -39,8 +39,8 @@ public class GameControler : MonoBehaviour
         {
             if (raycastHit.transform.tag == "Tile")
             {
-                raycastHit.transform.GetComponent<Outline>().enabled = true;
-                raycastHit.transform.GetComponent<Tile>().MoveTo(SlotManager.getInstance().getCurrentSlot());
+                raycastHit.transform.GetComponent<Tile>().Select();
+                SlotManager.getInstance().addTile(raycastHit.transform.GetComponent<Tile>());
             }
         }
 
