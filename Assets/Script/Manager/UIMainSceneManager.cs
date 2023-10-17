@@ -5,16 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class UIMainSceneManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static UIMainSceneManager instance;
+    public static UIMainSceneManager getInstance()
     {
-        
+        if (instance == null)
+        {
+            instance = GameObject.FindObjectOfType<UIMainSceneManager>();
+        }
+        return instance;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        instance = this;
+    }
+
+    [SerializeField] public GameObject LevelChestMenu;
+    [SerializeField] public GameObject RewardMenu;
+
+    // Level Chest
+
+    void Start()
+    {
+        LevelChestMenu.GetComponent<LevelChestMenu>().loadStart();
+        LevelChestMenu.SetActive(false);
+        RewardMenu.SetActive(false);
     }
 
     public void OnPlayBtnClick()
