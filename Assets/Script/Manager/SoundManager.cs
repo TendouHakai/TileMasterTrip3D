@@ -26,6 +26,7 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         PlayMusic("Music");
+        LoadData(SaveAndLoadManager.getInstance().LoadSoundData());
     }
 
     // Update is called once per frame
@@ -33,6 +34,24 @@ public class SoundManager : MonoBehaviour
     {
         
     }
+
+    // Save and load
+
+    public void LoadData(SettingSoundData data)
+    {
+        if (data != null)
+        {
+            MusicSource.volume = data.isOnMusic ? 1 : 0;
+            SoundSource.volume = data.isOnSound ? 1 : 0;
+        }
+    }
+
+    public void SaveData()
+    {
+        SaveAndLoadManager.getInstance().SaveSoundData();
+    }
+
+    // function
 
     public void PlayMusic(string ID)
     {
@@ -70,8 +89,18 @@ public class SoundManager : MonoBehaviour
         MusicSource.volume = isOn ? 1 : 0;
     }
 
+    public bool getOnOffMusic()
+    {
+        return MusicSource.volume > 0;
+    }
+
     public void setOnOffSound(bool isOn)
     {
         SoundSource.volume = isOn ? 1 : 0;
+    }
+
+    public bool getOnOffSound()
+    {
+        return SoundSource.volume > 0;
     }
 }

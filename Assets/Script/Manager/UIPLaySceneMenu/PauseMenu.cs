@@ -11,13 +11,19 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        LoadSetting(SaveAndLoadManager.getInstance().LoadSoundData());
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void LoadSetting(SettingSoundData data)
+    {
+        toggleMusic.isOn = data.isOnMusic;
+        toggleSound.isOn = data.isOnSound;
     }
 
     public void OnClosePauseMenu()

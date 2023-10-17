@@ -55,6 +55,7 @@ public class HUBManger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LoadData(SaveAndLoadManager.getInstance().LoadHUBData());
         if (isplayScene)
         {
             starText.text = star.ToString();
@@ -112,6 +113,25 @@ public class HUBManger : MonoBehaviour
 
         }
     }
+
+    // Save and load data
+    public void LoadData(HUBData data)
+    {
+        if (data != null)
+        {
+            enegy = data.Enegy;
+            star = data.Star;
+            coin = data.Coin;
+            level = data.Level;
+        }
+    }
+
+    public void SaveData()
+    {
+        SaveAndLoadManager.getInstance().SaveHUBData();
+    }
+
+    // function
 
     string getTimeText()
     {
