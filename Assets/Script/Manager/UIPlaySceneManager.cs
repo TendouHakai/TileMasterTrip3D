@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIPlaySceneManager : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class UIPlaySceneManager : MonoBehaviour
 
     public void OnRemoveBtnClick()
     {
-        Debug.Log("run");
+        SoundManager.getInstance().PlaySound("ButtonClick");
         if (SlotManager.getInstance().isCanRemove())
         {
             Debug.Log("remove");
@@ -48,6 +49,7 @@ public class UIPlaySceneManager : MonoBehaviour
 
     public void OnGuideBtnClick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         SlotManager.getInstance().addGuide();
     }
 
@@ -55,14 +57,9 @@ public class UIPlaySceneManager : MonoBehaviour
 
     public void OnSettingBtn()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         pauseMenu.SetActive(true);
         GameControler.getInstance().Pause();
-    }
-
-    public void OnClosePauseMenu()
-    {
-        pauseMenu.SetActive(false);
-        GameControler.getInstance().Resume();
     }
 
     //Time out Menu

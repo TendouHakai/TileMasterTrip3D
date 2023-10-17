@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa40dcaa6d92f54abac81cdb8a2e16b, type: 3}
+  m_Name: SoundConfig
+  m_EditorClassIdentifier: 
+  configs:
+  - ID: ButtonClick
+    clip: {fileID: 8300000, guid: a406e641c1db2754e9a77f8552935cd6, type: 3}
+  - ID: PickTile
+    clip: {fileID: 8300000, guid: 173e5ef0b643b814b97c6b1a555416b5, type: 3}
+  - ID: SlotRecycle
+    clip: {fileID: 8300000, guid: ec4c976421aa7a34b9a7b2384dcf09c7, type: 3}
+  - ID: Music
+    clip: {fileID: 8300000, guid: 88dc7d218be0c5a44b77f2bd84eb9854, type: 3}
+  - ID: Victory
+    clip: {fileID: 8300000, guid: 5101382ff1a5e9b4e9117494a7c0153d, type: 3}
+  - ID: GameStart
+    clip: {fileID: 8300000, guid: 6da1fafb6dd9ea2438500feb1ae3e22d, type: 3}
+  - ID: GameEnd
+    clip: {fileID: 8300000, guid: c81b3692847a5f944a9c235bbd398132, type: 3}
+  - ID: Guide
+    clip: {fileID: 8300000, guid: 6f35e2639bc68444dad80b0b0def3e38, type: 3}
+  - ID: BackTile1
+    clip: {fileID: 8300000, guid: 93148132220080d448b616e05753ec7c, type: 3}
+  - ID: BackTile3
+    clip: {fileID: 8300000, guid: 707be1526a70f6f45ae1b34ec3bde2b8, type: 3}

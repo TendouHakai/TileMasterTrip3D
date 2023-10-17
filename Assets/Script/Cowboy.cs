@@ -39,6 +39,7 @@ public class Cowboy : MonoBehaviour
     public IEnumerator Spawning()
     {
         Debug.Log(SpawnManager.getInstance());
+        SoundManager.getInstance().PlaySound("GameStart");
         while(SpawnManager.getInstance().IsSpawn(index))
         {
             Tile tile = Instantiate(Tilefrefabs, SpawnPoint.position, Quaternion.identity);
@@ -87,6 +88,7 @@ public class Cowboy : MonoBehaviour
         isStartCircular = false;
         index = 0;
         ani.Play("CowboyEndAni");
+        SoundManager.getInstance().StopSound();
     }
 
     public void End()

@@ -58,6 +58,7 @@ public class GameControler : MonoBehaviour
         {
             if (raycastHit.transform.tag == "Tile")
             {
+                SoundManager.getInstance().PlaySound("PickTile");
                 raycastHit.transform.GetComponent<Tile>().Select();
                 SlotManager.getInstance().addTile(raycastHit.transform.GetComponent<Tile>());
             }

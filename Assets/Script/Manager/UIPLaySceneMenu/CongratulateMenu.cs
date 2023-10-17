@@ -14,12 +14,14 @@ public class CongratulateMenu : MonoBehaviour
 
     public void OnCloseClick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         UIPlaySceneManager.getInstance().playLevelMenu.SetActive(true);
         this.gameObject.SetActive(false);
     }
 
     public void OnContinueBtnClick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         UIPlaySceneManager.getInstance().playLevelMenu.SetActive(true); 
         UIPlaySceneManager.getInstance().playLevelMenu.GetComponent<PLayMenu>().BtnText.text = "PLay";
         this.gameObject.SetActive(false);

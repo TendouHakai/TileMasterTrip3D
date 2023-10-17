@@ -10,6 +10,7 @@ public class PLayMenu : MonoBehaviour
 
     public void OnCloseBtnClick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         SpawnManager.getInstance().loadLevel(HUBManger.getInstance().level);
         GameControler.getInstance().Resume();
         this.gameObject.SetActive(false);
@@ -17,6 +18,7 @@ public class PLayMenu : MonoBehaviour
 
     public void OnPlayBtnClick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         SpawnManager.getInstance().loadLevel(HUBManger.getInstance().level);
         GameControler.getInstance().Resume();
         this.gameObject.SetActive(false);

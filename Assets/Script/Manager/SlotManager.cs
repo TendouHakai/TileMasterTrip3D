@@ -59,6 +59,7 @@ public class SlotManager : MonoBehaviour
     {
         int index = checkChain();
         if (index == -1) return;
+        SoundManager.getInstance().PlaySound("SlotRecycle");
         for (int i = 0; i < 3; i++)
         {
             tiles[index].remove();
