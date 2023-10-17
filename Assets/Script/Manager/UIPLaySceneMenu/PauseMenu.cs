@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
     public void OnBackHomeClick()
     {
         SoundManager.getInstance().PlaySound("ButtonClick");
-        SceneManager.LoadScene(0);
+        UIPlaySceneManager.getInstance().BackToMainScene();
     }
 
     public void OnChangeValueToggleSound()

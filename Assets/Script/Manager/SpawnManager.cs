@@ -28,7 +28,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
-        loadLevel(HUBManger.getInstance().level);
+        loadLevel(HUBManger.getInstance().getCurrentLevel());
     }
 
     public void loadLevel(int ID)
@@ -44,8 +44,11 @@ public class SpawnManager : MonoBehaviour
             }
         }
 
+        //reset
         HUBManger.getInstance().starInLevel = 0;
         HUBManger.getInstance().startTime();
+        SlotManager.getInstance().resetSlot();  
+        
 
         cowboy.startAni();
     }
@@ -83,8 +86,9 @@ public class SpawnManager : MonoBehaviour
         tiles.Remove(tile);
         if(tiles.Count <= 0)
         {
-            HUBManger.getInstance().level++;
-            UIPlaySceneManager.getInstance().congratulateMenu.SetActive(true);
+            HUBManger.getInstance().level+=1;
+            UIPlaySceneManager.getInstance().PackMenu.SetActive(true);
+            //UIPlaySceneManager.getInstance().congratulateMenu.SetActive(true);
         }
     }
 
@@ -93,7 +97,7 @@ public class SpawnManager : MonoBehaviour
     {
         for(int i =0; i<tiles.Count; i++)
         {
-            if (tiles[i].ID == ID)
+            if (tiles[i].ID == ID || ID ==-1)
             {
                 if (!SlotManager.getInstance().isContain(tiles[i]))
                 {

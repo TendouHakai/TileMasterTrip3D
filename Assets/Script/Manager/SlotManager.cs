@@ -20,6 +20,7 @@ public class SlotManager : MonoBehaviour
     }
 
     [SerializeField] List<Transform> slots = new List<Transform>();
+    [SerializeField] GameObject addSlotBtn;
     int n;
 
     List<Tile> tiles = new List<Tile>();
@@ -76,7 +77,8 @@ public class SlotManager : MonoBehaviour
         int count = 1;
         for (int i = 1; i < tiles.Count; i++)
         {
-            if (tiles[index].ID == tiles[i].ID)
+            if (tiles[index].isOnSlot == false || tiles[i].isOnSlot == false) continue;
+            else if (tiles[index].ID == tiles[i].ID)
             {
                 count++;
                 if (count == 3) return index;
@@ -132,7 +134,7 @@ public class SlotManager : MonoBehaviour
     {
         for(int i =0; i<n; i++)
         {
-            tiles[tiles.Count - 1].MoveTo(new Vector3(Random.Range(-2.7f, 2.7f), 0, Random.Range(-3.5f, 3.5f)), 20f, false);
+            tiles[tiles.Count - 1].MoveTo(new Vector3(Random.Range(-2.7f, 2.7f), 0f, Random.Range(-3.5f, 3.5f)), 20f, false);
             tiles.RemoveAt(tiles.Count - 1);
         }
     }
@@ -146,7 +148,10 @@ public class SlotManager : MonoBehaviour
 
     public void addGuide()
     {
-        if(tiles.Count == 0) return;
+        if(tiles.Count == 0)
+        {
+            SpawnManager.getInstance().addTileToSlot(-1, 3);
+        }
         int index = 0;
         bool flag = false;
 
@@ -171,5 +176,25 @@ public class SlotManager : MonoBehaviour
         {
             SpawnManager.getInstance().addTileToSlot(tiles[0].ID, 2);
         }
+    }
+
+    // Add slot
+    public void addASlot()
+    {
+        n++;
+    }
+
+    // public reset
+    public void resetSlot()
+    {
+        for (int i = 0; i < tiles.Count; i++)
+        {
+            Destroy(tiles[i].gameObject);
+            tiles.RemoveAt(i);
+            i--;
+        }
+        tiles.Clear();
+        addSlotBtn.SetActive(true);
+        n = 7;
     }
 }

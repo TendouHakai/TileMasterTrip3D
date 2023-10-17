@@ -133,6 +133,12 @@ public class HUBManger : MonoBehaviour
 
     // function
 
+    public int getCurrentLevel()
+    {
+        LoadData(SaveAndLoadManager.getInstance().LoadHUBData());
+        return level;
+    }
+
     string getTimeText()
     {
         int phut = (int)time / 60;

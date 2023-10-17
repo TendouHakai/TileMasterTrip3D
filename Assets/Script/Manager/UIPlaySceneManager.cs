@@ -26,6 +26,8 @@ public class UIPlaySceneManager : MonoBehaviour
     [SerializeField] public GameObject outOfSlotMenu;
     [SerializeField] public GameObject congratulateMenu;
     [SerializeField] public GameObject playLevelMenu;
+    [SerializeField] public GameObject AddASlotMenu;
+    [SerializeField] public GameObject PackMenu;
 
 
     void Start()
@@ -35,6 +37,9 @@ public class UIPlaySceneManager : MonoBehaviour
         outOfSlotMenu.SetActive(false);
         congratulateMenu.SetActive(false);
         playLevelMenu.SetActive(false);
+        AddASlotMenu.SetActive(false);
+        PackMenu.SetActive(false);
+        PackMenu.GetComponent<PackOpenMenu>().LoadStart();
     }
 
     public void OnRemoveBtnClick()
@@ -51,6 +56,20 @@ public class UIPlaySceneManager : MonoBehaviour
     {
         SoundManager.getInstance().PlaySound("ButtonClick");
         SlotManager.getInstance().addGuide();
+    }
+
+    public void OnAddASlotBtnClick()
+    {
+        SoundManager.getInstance().PlaySound("ButtonClick");
+        AddASlotMenu.SetActive(true);
+    }
+
+    // Back to main scene
+    public void BackToMainScene()
+    {
+        SaveAndLoadManager.getInstance().SaveHUBData();
+        SaveAndLoadManager.getInstance().SaveSoundData();
+        SceneManager.LoadScene(0);
     }
 
     // pause menu

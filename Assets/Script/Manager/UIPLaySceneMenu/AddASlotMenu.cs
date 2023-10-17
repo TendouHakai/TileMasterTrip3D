@@ -2,18 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeOutMenu : MonoBehaviour
+public class AddASlotMenu : MonoBehaviour
 {
+    private void OnEnable()
+    {
+        GameControler.getInstance().Pause();
+    }
+
     [SerializeField] private FloatToast ToastFrefabs;
+    [SerializeField] private GameObject AddICon;
     public void OnBuy500BtnClick()
     {
         SoundManager.getInstance().PlaySound("ButtonClick");
         if (HUBManger.getInstance().coin >= 500)
         {
-            HUBManger.getInstance().coin -=500;
-            HUBManger.getInstance().addTime();
+            HUBManger.getInstance().coin -= 500;
+            SlotManager.getInstance().addASlot();
             GameControler.getInstance().Resume();
-            this.gameObject.SetActive(false);          
+            AddICon.SetActive(false);
+            this.gameObject.SetActive(false);
         }
         else
         {
@@ -25,13 +32,7 @@ public class TimeOutMenu : MonoBehaviour
     public void OnCloseBtnClick()
     {
         SoundManager.getInstance().PlaySound("ButtonClick");
-        UIPlaySceneManager.getInstance().playLevelMenu.SetActive(true);
-        UIPlaySceneManager.getInstance().playLevelMenu.GetComponent<PLayMenu>().BtnText.text = "Try Again";
+        GameControler.getInstance().Resume();
         this.gameObject.SetActive(false);
-    }
-
-    private void OnEnable()
-    {
-        GameControler.getInstance().Pause();
     }
 }
