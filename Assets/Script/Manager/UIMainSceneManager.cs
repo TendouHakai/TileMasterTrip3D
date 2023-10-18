@@ -21,6 +21,8 @@ public class UIMainSceneManager : MonoBehaviour
     }
 
     [SerializeField] public GameObject LevelChestMenu;
+    [SerializeField] public GameObject StarChestMenu;
+    [SerializeField] public GameObject ShopMenu;
     [SerializeField] public GameObject RewardMenu;
 
     // Level Chest
@@ -28,12 +30,20 @@ public class UIMainSceneManager : MonoBehaviour
     void Start()
     {
         LevelChestMenu.GetComponent<LevelChestMenu>().loadStart();
+        StarChestMenu.GetComponent<StarChestMenu>().loadStart();
         LevelChestMenu.SetActive(false);
+        StarChestMenu.SetActive(false);
         RewardMenu.SetActive(false);
+        ShopMenu.SetActive(false);
     }
 
     public void OnPlayBtnClick()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void OnAddCoinCliCk()
+    {
+        ShopMenu.SetActive(true);
     }
 }

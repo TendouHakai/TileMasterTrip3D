@@ -20,6 +20,7 @@ public class HUBManger : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        LoadData(SaveAndLoadManager.getInstance().LoadHUBData());
     }
     [Header("--------------INFO HUB----------------")]
     public bool isplayScene = false;
@@ -32,6 +33,13 @@ public class HUBManger : MonoBehaviour
     [SerializeField] public float TIME_MAX = 900;
     [SerializeField] public int level = 1;
     [SerializeField] int combo = 0;
+
+    // buff
+    [SerializeField] public int buffBack;
+    [SerializeField] public int buffGuide;
+    [SerializeField] public int buffAddTime;
+    [SerializeField] public int buffAddSlot;
+
     // time combo
     float timeComboStart = 0f;
     float timeCombo = 5f;
@@ -146,6 +154,7 @@ public class HUBManger : MonoBehaviour
         return phut.ToString() +":" + giay.ToString();   
     }
 
+    // add star
     public void addStar(int n)
     {
         this.star += n;
@@ -176,6 +185,7 @@ public class HUBManger : MonoBehaviour
         starText.text = this.star.ToString();
     }
 
+    // add combo
     IEnumerator createStarWithCombo(int index)
     {
         for (int i = 0; i < combo; i++)
@@ -193,6 +203,7 @@ public class HUBManger : MonoBehaviour
         return combo;
     }
 
+    // add Time
     public void addTime()
     {
         time += 5 * 60;
@@ -203,5 +214,12 @@ public class HUBManger : MonoBehaviour
     {
         time = TIME_MAX;
         isTiming = true;
+    }
+
+    // add coin
+    public void addCoin(int coin)
+    {
+        this.coin += coin;
+        this.coinText.text = this.coin.ToString();   
     }
 }

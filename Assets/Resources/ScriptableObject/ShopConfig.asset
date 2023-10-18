@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34ee293c5793264c9711d08b9388390, type: 3}
+  m_Name: ShopConfig
+  m_EditorClassIdentifier: 
+  bundleConfigs:
+  - ID: 0
+    nameTag: Mini Bundle
+    price: 5.99
+    rewards: []
+  - ID: 1
+    nameTag: Big Bundle
+    price: 9.99
+    rewards: []
+  - ID: 2
+    nameTag: Super Bundle
+    price: 19.99
+    rewards: []
+  - ID: 3
+    nameTag: Huge Bundle
+    price: 39.99
+    rewards: []
+  coinConfigs:
+  - ID: 0
+    coin: 1000
+    price: 1.99
+  - ID: 1
+    coin: 5000
+    price: 7.99
+  - ID: 2
+    coin: 10000
+    price: 14.99

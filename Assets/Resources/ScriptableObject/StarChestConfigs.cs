@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "StartChestConfig", menuName = "Config/StarChest")]
-public class StartChestConfigs : ScriptableObject
+[CreateAssetMenu(fileName = "StarChestConfig", menuName = "Config/StarChest")]
+public class StarChestConfigs : ScriptableObject
 {
-    private static StartChestConfigs instance;
-    public static StartChestConfigs getInstance()
+    private static StarChestConfigs instance;
+    public static StarChestConfigs getInstance()
     {
         if (instance == null)
         {
-            instance = Resources.Load<StartChestConfigs>("ScriptableObject/StartChestConfig");
+            instance = Resources.Load<StarChestConfigs>("ScriptableObject/StarChestConfig");
         }
         return instance;
     }
@@ -25,6 +25,16 @@ public class StartChestConfigs : ScriptableObject
     public List<StarChestConfig> getListConfigs()
     {
         return configs;
+    }
+
+    public StarChestConfig getIsNotClaimConfig()
+    {
+        return configs.Find(c => c.isClaim == false);
+    }
+
+    public StarChestConfig getPreviousConfigByStar(int Star)
+    {
+        return configs.FindLast(c => c.Star < Star);
     }
 }
 

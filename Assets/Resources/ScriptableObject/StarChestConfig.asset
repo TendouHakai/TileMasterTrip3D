@@ -10,24 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ea866234054ddf479f13c69dcf938f4, type: 3}
-  m_Name: StartChestConfig
+  m_Name: StarChestConfig
   m_EditorClassIdentifier: 
   configs:
   - ID: 0
-    Star: 2000
-    isClaim: 0
-    reward:
-      coin: 200
-      back: 0
-      guide: 0
-      addtime: 0
-      slot: 0
+    Star: 100
+    isClaim: 1
+    rewards:
+    - IDRewardConfig: 0
+      SL: 200
   - ID: 1
-    Star: 5000
-    isClaim: 0
-    reward:
-      coin: 500
-      back: 0
-      guide: 0
-      addtime: 0
-      slot: 0
+    Star: 200
+    isClaim: 1
+    rewards:
+    - IDRewardConfig: 0
+      SL: 300

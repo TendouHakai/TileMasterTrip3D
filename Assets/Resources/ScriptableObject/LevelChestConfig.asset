@@ -23,5 +23,5 @@ MonoBehaviour:
     level: 6
     isClaim: 0
     rewards:
-    - IDRewardConfig: 0
-      SL: 1000
+    - IDRewardConfig: 1
+      SL: 1

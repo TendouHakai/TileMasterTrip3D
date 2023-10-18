@@ -43,7 +43,7 @@ public class PackOpenMenu : MonoBehaviour
         while (slider.value < (float)(currentLevel - startLevel) / (endLevel - startLevel))
         {
             slider.value += 0.01f;
-            textPercent.text = (slider.value*100).ToString() + "%";
+            textPercent.text = ((int)slider.value*100).ToString() + "%";
             yield return new WaitForSeconds(speed);
         }
 

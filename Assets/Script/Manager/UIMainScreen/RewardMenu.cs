@@ -36,7 +36,7 @@ public class RewardMenu : MonoBehaviour
             switch (rewards[i].IDRewardConfig)
             {
                 case 0:
-                    HUBManger.getInstance().coin += rewards[i].SL;
+                    HUBManger.getInstance().addCoin(rewards[i].SL);
                     break;
                 case 1:
                     //HUBManger.getInstance().Bakc += rewards[i].SL;
@@ -54,6 +54,7 @@ public class RewardMenu : MonoBehaviour
 
             Destroy(rewardItems[i].gameObject); 
         }
+        rewardItems.Clear();
         rewards.Clear();
 
         this.gameObject.SetActive(false);
