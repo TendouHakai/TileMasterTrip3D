@@ -14,18 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   configs:
   - ID: 1
-    Name: Map01
+    Name: Level 1
+    Time: 400
+    tileInLevels:
+    - IDTile: 0
+      count: 0
+  - ID: 1
+    Name: Level 01
     Time: 400
     tileInLevels:
     - IDTile: 0
       count: 3
     - IDTile: 1
       count: 3
-  - ID: 2
-    Name: Map02
-    Time: 500
-    tileInLevels:
-    - IDTile: 0
-      count: 6
-    - IDTile: 1
-      count: 6

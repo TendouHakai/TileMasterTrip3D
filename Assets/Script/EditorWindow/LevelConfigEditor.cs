@@ -6,20 +6,14 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using static UnityEditor.Progress;
 
-public class LevelConfigEditor : EditorWindow
+public class LevelConfigEditor : EditorConfig
 {
     int tabIndex = 0;
     public List<LevelConfig> configs;
 
-    private GUIStyle tabStyleNormal;
-    private GUIStyle tabStyleSelected;
-    private GUIStyle tabStyleAddLevel;
-
     // comboBox
     public List<string> options = new List<string>();  
     public List<TileConfig> tileConfigs;
-
-    private Vector2 scrollPosition = Vector2.zero;
 
     [MenuItem("Window/GameData/LevelConfig")]
     protected static void ShowWindow()
@@ -42,22 +36,7 @@ public class LevelConfigEditor : EditorWindow
     public void OnGUI()
     {
         GUILayout.BeginVertical();
-        // Tạo GUIStyle cho tab khi không được chọn
-        tabStyleNormal = new GUIStyle(GUI.skin.button);
-        tabStyleNormal.fixedHeight = 30;
-        tabStyleNormal.fixedWidth = 80;
-
-        // Tạo GUIStyle cho tab khi được chọn
-        tabStyleSelected = new GUIStyle(GUI.skin.button);
-        tabStyleSelected.fixedHeight = 30;
-        tabStyleSelected.fixedWidth = 80;
-        tabStyleSelected.normal.background = MakeTexture(80, 30, Color.black);
-
-        // Tạo GUIStyle cho button add level
-        tabStyleAddLevel = new GUIStyle(GUI.skin.button);
-        tabStyleAddLevel.fixedHeight = 30;
-        tabStyleAddLevel.fixedWidth = 30;
-        tabStyleAddLevel.normal.background = MakeTexture(30, 30, new Color(0, 48f/255, 48f/255));
+        createGUIstyle();
 
         drawLevelTab();
         GUILayout.EndVertical();
@@ -142,6 +121,36 @@ public class LevelConfigEditor : EditorWindow
             DrawSprite(tileConfigs[configs[tabIndex].tileInLevels[row].IDTile].img);
             configs[tabIndex].tileInLevels[row].count = EditorGUILayout.IntField(configs[tabIndex].tileInLevels[row].count, GUILayout.Width(100));
             
+            if(configs[tabIndex].tileInLevels.Count > 1)
+            {
+                if (row == 0)
+                {
+                    if (GUILayout.Button("↓", GUILayout.Width(40)))
+                    {
+                        Swap(0, 1);
+                    }
+                }
+                else if (row == configs[tabIndex].tileInLevels.Count - 1)
+                {
+                    if (GUILayout.Button("↑", GUILayout.Width(40)))
+                    {
+                        Swap(row, row -1);
+                    }
+                }
+                else
+                {
+                    if (GUILayout.Button("↓", GUILayout.Width(20)))
+                    {
+                        Swap(row, row+1);
+                    }
+
+                    if (GUILayout.Button("↑", GUILayout.Width(20)))
+                    {
+                        Swap(row, row-1);
+                    }
+                }
+            }
+
             if (GUILayout.Button("X", GUILayout.Width(20)))
             {
                 configs[tabIndex].tileInLevels.RemoveAt(row);
@@ -157,28 +166,10 @@ public class LevelConfigEditor : EditorWindow
         }
     }
 
-    private Texture2D MakeTexture(int width, int height, Color color)
+    public void Swap(int i, int j)
     {
-        Texture2D texture = new Texture2D(width, height);
-        Color[] pixels = new Color[width * height];
-
-        for (int i = 0; i < pixels.Length; i++)
-        {
-            pixels[i] = color;
-        }
-
-        texture.SetPixels(pixels);
-        texture.Apply();
-
-        return texture;
-    }
-    private void DrawSprite(Texture2D sprite)
-    {
-        if (sprite != null)
-        {
-            //GUIContent content = new GUIContent(sprite);
-            Rect rect = GUILayoutUtility.GetRect(80, 80, GUILayout.Width(80), GUILayout.Height(80)); // Kích thước cho mỗi sprite
-            GUI.DrawTexture(rect, sprite, ScaleMode.ScaleToFit);
-        }
+        TileInLevel temp = configs[tabIndex].tileInLevels[i];
+        configs[tabIndex].tileInLevels[i] = configs[tabIndex].tileInLevels[j];
+        configs[tabIndex].tileInLevels[j] = temp;
     }
 }

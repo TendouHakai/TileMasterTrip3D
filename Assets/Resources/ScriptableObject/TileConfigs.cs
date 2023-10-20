@@ -39,4 +39,9 @@ public class TileConfig
 {
     public int ID;
     public Texture2D img;
+
+    public TileConfig()
+    {
+        ID = 0;
+    }
 }
