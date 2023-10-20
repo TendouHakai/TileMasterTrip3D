@@ -48,5 +48,5 @@ public class PackConfig
 {
     public int ID;
     public int Level;
-    public List<int> TileOpens = new List<int>();
+    public List<string> TileOpens = new List<string>();
 }

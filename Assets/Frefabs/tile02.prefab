@@ -51,7 +51,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &575525762
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -82,6 +82,7 @@ MonoBehaviour:
   body: {fileID: 575525761}
   outline: {fileID: 4436151698481172564}
   effectFrefabs: {fileID: 3578351466082127785, guid: 776f27845e726e448b688bdb59b73f42, type: 3}
+  isOnSlot: 0
   isUpdateSlotManager: 0
 --- !u!114 &4436151698481172564
 MonoBehaviour:

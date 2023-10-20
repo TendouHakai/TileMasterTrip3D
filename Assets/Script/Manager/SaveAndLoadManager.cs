@@ -9,6 +9,8 @@ public class HUBData
     public int Star;
     public int Coin;
     public int Level;
+
+    public List<buffInHUB> buffs = new List<buffInHUB>();
 }
 
 public class SettingSoundData
@@ -48,6 +50,8 @@ public class SaveAndLoadManager : MonoBehaviour
         data.Star = HUBManger.getInstance().star;
         data.Coin = HUBManger.getInstance().coin;
         data.Level = HUBManger.getInstance().level;
+
+        data.buffs = HUBManger.getInstance().buffs;
 
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(Application.persistentDataPath + "/HUBData.json", json);

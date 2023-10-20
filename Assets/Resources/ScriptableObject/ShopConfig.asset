@@ -16,19 +16,51 @@ MonoBehaviour:
   - ID: 0
     nameTag: Mini Bundle
     price: 5.99
-    rewards: []
+    rewards:
+    - IDRewardConfig: 0
+      SL: 500
+    - IDRewardConfig: 1
+      SL: 1
+    - IDRewardConfig: 2
+      SL: 1
+    - IDRewardConfig: 3
+      SL: 1
   - ID: 1
     nameTag: Big Bundle
     price: 9.99
-    rewards: []
+    rewards:
+    - IDRewardConfig: 0
+      SL: 1000
+    - IDRewardConfig: 1
+      SL: 1
+    - IDRewardConfig: 2
+      SL: 1
+    - IDRewardConfig: 3
+      SL: 1
   - ID: 2
     nameTag: Super Bundle
     price: 19.99
-    rewards: []
+    rewards:
+    - IDRewardConfig: 0
+      SL: 2000
+    - IDRewardConfig: 1
+      SL: 2
+    - IDRewardConfig: 2
+      SL: 2
+    - IDRewardConfig: 3
+      SL: 2
   - ID: 3
     nameTag: Huge Bundle
     price: 39.99
-    rewards: []
+    rewards:
+    - IDRewardConfig: 0
+      SL: 3000
+    - IDRewardConfig: 1
+      SL: 2
+    - IDRewardConfig: 2
+      SL: 2
+    - IDRewardConfig: 3
+      SL: 2
   coinConfigs:
   - ID: 0
     coin: 1000

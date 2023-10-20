@@ -56,6 +56,7 @@ public class ShopMenu : MonoBehaviour
 
     public void OnCloseBtnClick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         this.gameObject.SetActive(false);
     }
 }

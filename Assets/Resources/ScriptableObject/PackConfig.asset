@@ -15,7 +15,28 @@ MonoBehaviour:
   configs:
   - ID: 0
     Level: 2
-    TileOpens: 0000000001000000
+    TileOpens:
+    - blue_2
+    - pink_2
+    - purple_2
+    - red_1
+    - white_1
+    - yellow_1
   - ID: 1
     Level: 6
-    TileOpens: 
+    TileOpens:
+    - blue_3
+    - pink_3
+    - purple_3
+    - red_2
+    - white_2
+    - yellow_2
+  - ID: 2
+    Level: 10
+    TileOpens:
+    - blue_4
+    - pink_4
+    - purple_4
+    - red_3
+    - white_3
+    - yellow_3

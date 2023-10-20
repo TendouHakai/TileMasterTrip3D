@@ -9,11 +9,10 @@ using UnityEngine;
 public class Cowboy : MonoBehaviour
 {
     [Header("---------Spawn-----------")]
-    public int n;
     [SerializeField] Transform SpawnPoint;
     [SerializeField] Tile Tilefrefabs;
 
-    int index;
+    //int index;
     Coroutine SpawnCoroutine;
     public float speedSpawn = 0.01f;
     bool isStartCircular = false;
@@ -27,7 +26,7 @@ public class Cowboy : MonoBehaviour
 
     void Start()
     {
-        index = 0;
+        //index = 0;
     }
 
     // Update is called once per frame
@@ -38,21 +37,22 @@ public class Cowboy : MonoBehaviour
 
     public IEnumerator Spawning()
     {
-        Debug.Log(SpawnManager.getInstance());
+        Vector3 vec = Vector3.zero;
         SoundManager.getInstance().PlaySound("GameStart");
-        while(SpawnManager.getInstance().IsSpawn(index))
+        while(SpawnManager.getInstance().IsSpawn())
         {
-            Tile tile = Instantiate(Tilefrefabs, SpawnPoint.position, Quaternion.identity);
-            tile.ID = SpawnManager.getInstance().SpawnID(index++);
+            Tile tile = Instantiate(Tilefrefabs, SpawnPoint.position + vec, Quaternion.identity);
+            tile.ID = SpawnManager.getInstance().SpawnID();
 
             if (isStartCircular)
             {
-                angle += 10;
+                angle -= 10;
                 if (force < FORCE_MAX) force += 0.1f;
 
-                Vector3 vec = Vector3.zero;
+                vec = Vector3.zero;
                 vec.x = Mathf.Cos((angle + 90f) * Mathf.Deg2Rad);
                 vec.z = Mathf.Sin((angle + 90f) * Mathf.Deg2Rad);
+                vec.y = 0f;
                 tile.body.AddForce(vec * force, ForceMode.Impulse);
             }
 
@@ -86,7 +86,7 @@ public class Cowboy : MonoBehaviour
     {
         StopCoroutine(SpawnCoroutine);
         isStartCircular = false;
-        index = 0;
+        //index = 0;
         ani.Play("CowboyEndAni");
         SoundManager.getInstance().StopSound();
     }

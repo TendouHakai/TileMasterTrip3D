@@ -41,11 +41,13 @@ public class PauseMenu : MonoBehaviour
 
     public void OnChangeValueToggleSound()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         SoundManager.getInstance().setOnOffSound(toggleSound.isOn);
     }
 
     public void OnChangeValueToggleMusic()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         SoundManager.getInstance().setOnOffMusic(toggleMusic.isOn);
     }
 }

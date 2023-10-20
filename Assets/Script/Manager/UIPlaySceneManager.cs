@@ -28,6 +28,7 @@ public class UIPlaySceneManager : MonoBehaviour
     [SerializeField] public GameObject playLevelMenu;
     [SerializeField] public GameObject AddBuffMenu;
     [SerializeField] public GameObject PackMenu;
+    [SerializeField] public GameObject WinMenu;
 
 
     void Start()
@@ -40,11 +41,13 @@ public class UIPlaySceneManager : MonoBehaviour
         AddBuffMenu.SetActive(false);
         PackMenu.SetActive(false);
         PackMenu.GetComponent<PackOpenMenu>().LoadStart();
+        //WinMenu.SetActive(false);   
     }
 
     // Back to main scene
     public void BackToMainScene()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         SaveAndLoadManager.getInstance().SaveHUBData();
         SaveAndLoadManager.getInstance().SaveSoundData();
         SceneManager.LoadScene(0);

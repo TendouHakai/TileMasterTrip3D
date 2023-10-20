@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using static UnityEditor.Progress;
-
+#if UNITY_EDITOR
 public class LevelConfigEditor : EditorConfig
 {
     int tabIndex = 0;
     public List<LevelConfig> configs;
+    private Vector2 scrollPosition = Vector2.zero;
+    private int countCol = 0;
 
     // comboBox
     public List<string> options = new List<string>();  
@@ -29,7 +29,7 @@ public class LevelConfigEditor : EditorConfig
         options.Clear();
         foreach (TileConfig tileConfig in tileConfigs)
         {
-            options.Add(tileConfig.ID.ToString());
+            options.Add(tileConfig.ID);
         }
     }
 
@@ -55,7 +55,7 @@ public class LevelConfigEditor : EditorConfig
                 EditorGUILayout.BeginHorizontal();
             }
 
-            if(i<configs.Count-1)
+            if(i<=configs.Count-1)
             {
                 bool isSelected = (i == tabIndex);
                 GUIStyle style = isSelected ? tabStyleSelected : tabStyleNormal;
@@ -68,7 +68,7 @@ public class LevelConfigEditor : EditorConfig
             {
                 if (GUILayout.Button("+", tabStyleAddLevel))
                 {
-                    configs.Add(new LevelConfig());
+                    configs.Add(new LevelConfig(configs.Count+1));
                     tabIndex = configs.Count - 1;
                 }
             }
@@ -76,6 +76,7 @@ public class LevelConfigEditor : EditorConfig
             if ((i + 1) % buttonsPerRow == 0 || i==configs.Count)
             {
                 // Kết thúc dòng
+                countCol++;
                 EditorGUILayout.EndHorizontal();
             }
         }
@@ -85,8 +86,10 @@ public class LevelConfigEditor : EditorConfig
 
     public void DrawContent()
     {
+        scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.Width(position.width), GUILayout.Height(position.height - countCol*50));
+        countCol = 0;
         if (configs.Count <= 0) return;
-        configs[tabIndex].ID = EditorGUILayout.IntField("IDLevel", configs[tabIndex].ID, GUILayout.MaxWidth(500));
+        //configs[tabIndex].ID = EditorGUILayout.IntField("IDLevel", configs[tabIndex].ID, GUILayout.MaxWidth(500));
         configs[tabIndex].Name = EditorGUILayout.TextField("Name Level", configs[tabIndex].Name, GUILayout.MaxWidth(500));
         configs[tabIndex].Time = EditorGUILayout.IntField("Play time", configs[tabIndex].Time, GUILayout.MaxWidth(500));
         if(GUILayout.Button("Delete this Level", GUILayout.Width(150)))
@@ -102,6 +105,12 @@ public class LevelConfigEditor : EditorConfig
             }
         }
 
+        if (GUILayout.Button("Save", GUILayout.Width(100)))
+        {
+            EditorUtility.SetDirty(LevelConfigs.getInstance());
+            AssetDatabase.SaveAssets();
+        }
+
         GUILayout.Space(20);
         GUILayout.Label("List tile in this Map: ");
         // Đầu tiên, chúng ta có thể vẽ tiêu đề của từng cột
@@ -109,7 +118,7 @@ public class LevelConfigEditor : EditorConfig
         GUILayout.Label("Num", GUILayout.Width(30));
         GUILayout.Label("TileID", GUILayout.Width(100));
         GUILayout.Label("Sprite", GUILayout.Width(80));
-        GUILayout.Label("Count", GUILayout.Width(100));
+        GUILayout.Label("Chain", GUILayout.Width(100));
         EditorGUILayout.EndHorizontal();
         
         // Sau đó, chúng ta vẽ nội dung của bảng
@@ -117,9 +126,11 @@ public class LevelConfigEditor : EditorConfig
         {
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label((row+1).ToString(), GUILayout.Width(30));
-            configs[tabIndex].tileInLevels[row].IDTile = EditorGUILayout.Popup(configs[tabIndex].tileInLevels[row].IDTile, options.ToArray(), GUILayout.Width(100));
-            DrawSprite(tileConfigs[configs[tabIndex].tileInLevels[row].IDTile].img);
-            configs[tabIndex].tileInLevels[row].count = EditorGUILayout.IntField(configs[tabIndex].tileInLevels[row].count, GUILayout.Width(100));
+            int select;
+            select = EditorGUILayout.Popup(options.IndexOf(configs[tabIndex].tileInLevels[row].IDTile), options.ToArray(), GUILayout.Width(100));
+            configs[tabIndex].tileInLevels[row].IDTile = options[select];
+            DrawSprite(tileConfigs[select].img);
+            configs[tabIndex].tileInLevels[row].chain = EditorGUILayout.IntField(configs[tabIndex].tileInLevels[row].chain, GUILayout.Width(100));
             
             if(configs[tabIndex].tileInLevels.Count > 1)
             {
@@ -162,8 +173,9 @@ public class LevelConfigEditor : EditorConfig
 
         if(GUILayout.Button("Add Tiles", GUILayout.Width(100)))
         {
-            configs[tabIndex].tileInLevels.Add(new TileInLevel(Int32.Parse(options[0])));
+            configs[tabIndex].tileInLevels.Add(new TileInLevel(options[0]));
         }
+        EditorGUILayout.EndScrollView();
     }
 
     public void Swap(int i, int j)
@@ -173,3 +185,4 @@ public class LevelConfigEditor : EditorConfig
         configs[tabIndex].tileInLevels[j] = temp;
     }
 }
+#endif

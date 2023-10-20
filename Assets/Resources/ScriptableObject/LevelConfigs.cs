@@ -26,6 +26,11 @@ public class LevelConfigs : ScriptableObject
     {
         return configs;
     }
+
+    public bool isHaveLevel(int ID)
+    {
+        return configs.Find(c => c.ID == ID) != null;
+    }
 }
 
 [System.Serializable]
@@ -34,31 +39,39 @@ public class LevelConfig
     public int ID;
     public string Name;
     public int Time;
+    public List<TileInLevel> tileInLevels = new List<TileInLevel>();
 
     public LevelConfig()
     {
         ID = 0;
         Name = "New level";
-        Time = 0;
+        Time = 100;
     }
-    public List<TileInLevel> tileInLevels = new List<TileInLevel>();
+
+    public LevelConfig(int ID)
+    {
+        this.ID = ID;
+        Name = "New level";
+        Time = 100;
+    }
+    
 }
 
 [System.Serializable]
 public class TileInLevel
 {
-    public int IDTile;
-    public int count;
+    public string IDTile;
+    public int chain;
 
     public TileInLevel()
     {
-        IDTile = 0;
-        count = 0;
+        IDTile = "";
+        chain = 0;
     }
 
-    public TileInLevel(int iDTile, int count = 0)
+    public TileInLevel(string iDTile, int count = 0)
     {
         IDTile = iDTile;
-        this.count = count;
+        this.chain = count;
     }
 }

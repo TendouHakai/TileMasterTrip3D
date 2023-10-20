@@ -14,16 +14,150 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   configs:
   - ID: 1
-    Name: Level 1
+    Name: Level1
     Time: 400
     tileInLevels:
-    - IDTile: 0
-      count: 0
-  - ID: 1
-    Name: Level 01
-    Time: 400
+    - IDTile: blue_1
+      chain: 1
+    - IDTile: pink_1
+      chain: 1
+    - IDTile: purple_1
+      chain: 1
+  - ID: 2
+    Name: Level2
+    Time: 900
     tileInLevels:
-    - IDTile: 0
-      count: 3
-    - IDTile: 1
-      count: 3
+    - IDTile: blue_1
+      chain: 1
+    - IDTile: blue_2
+      chain: 1
+    - IDTile: pink_1
+      chain: 1
+    - IDTile: pink_2
+      chain: 1
+    - IDTile: purple_1
+      chain: 1
+    - IDTile: purple_2
+      chain: 1
+    - IDTile: red_1
+      chain: 1
+    - IDTile: white_1
+      chain: 1
+    - IDTile: yellow_1
+      chain: 1
+  - ID: 3
+    Name: Level3
+    Time: 500
+    tileInLevels:
+    - IDTile: blue_1
+      chain: 1
+    - IDTile: pink_1
+      chain: 2
+    - IDTile: blue_2
+      chain: 1
+    - IDTile: pink_2
+      chain: 2
+    - IDTile: purple_1
+      chain: 1
+    - IDTile: red_1
+      chain: 1
+    - IDTile: white_1
+      chain: 1
+    - IDTile: yellow_1
+      chain: 2
+    - IDTile: purple_2
+      chain: 2
+  - ID: 4
+    Name: Level4
+    Time: 600
+    tileInLevels:
+    - IDTile: blue_1
+      chain: 2
+    - IDTile: pink_1
+      chain: 1
+    - IDTile: purple_1
+      chain: 3
+    - IDTile: white_1
+      chain: 1
+    - IDTile: red_1
+      chain: 2
+    - IDTile: blue_1
+      chain: 1
+    - IDTile: yellow_1
+      chain: 2
+    - IDTile: blue_2
+      chain: 1
+    - IDTile: purple_2
+      chain: 2
+    - IDTile: pink_2
+      chain: 2
+  - ID: 5
+    Name: Level5
+    Time: 500
+    tileInLevels:
+    - IDTile: blue_1
+      chain: 2
+    - IDTile: blue_2
+      chain: 2
+    - IDTile: pink_2
+      chain: 2
+    - IDTile: pink_1
+      chain: 2
+    - IDTile: purple_1
+      chain: 2
+    - IDTile: purple_2
+      chain: 2
+    - IDTile: yellow_1
+      chain: 2
+    - IDTile: red_1
+      chain: 2
+    - IDTile: white_1
+      chain: 2
+  - ID: 6
+    Name: Level6
+    Time: 500
+    tileInLevels:
+    - IDTile: blue_1
+      chain: 2
+    - IDTile: blue_3
+      chain: 1
+    - IDTile: pink_3
+      chain: 2
+    - IDTile: pink_1
+      chain: 2
+    - IDTile: pink_2
+      chain: 1
+    - IDTile: purple_1
+      chain: 2
+    - IDTile: red_1
+      chain: 1
+    - IDTile: red_3
+      chain: 2
+    - IDTile: blue_2
+      chain: 1
+    - IDTile: blue_4
+      chain: 2
+    - IDTile: pink_4
+      chain: 1
+    - IDTile: pink_3
+      chain: 1
+    - IDTile: purple_2
+      chain: 1
+    - IDTile: red_1
+      chain: 2
+    - IDTile: red_2
+      chain: 1
+    - IDTile: red_3
+      chain: 1
+    - IDTile: white_2
+      chain: 1
+    - IDTile: white_1
+      chain: 1
+    - IDTile: white_3
+      chain: 1
+    - IDTile: yellow_3
+      chain: 1
+    - IDTile: yellow_1
+      chain: 1
+    - IDTile: yellow_2
+      chain: 2

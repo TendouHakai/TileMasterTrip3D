@@ -22,9 +22,17 @@ public class CongratulateMenu : MonoBehaviour
     public void OnContinueBtnClick()
     {
         SoundManager.getInstance().PlaySound("ButtonClick");
-        UIPlaySceneManager.getInstance().playLevelMenu.SetActive(true); 
-        UIPlaySceneManager.getInstance().playLevelMenu.GetComponent<PLayMenu>().BtnText.text = "PLay";
-        this.gameObject.SetActive(false);
+        if(LevelConfigs.getInstance().isHaveLevel(HUBManger.getInstance().level) == false)
+        {
+            UIPlaySceneManager.getInstance().WinMenu.SetActive(true);
+        }
+        else
+        {
+            UIPlaySceneManager.getInstance().playLevelMenu.SetActive(true);
+            UIPlaySceneManager.getInstance().playLevelMenu.GetComponent<PLayMenu>().BtnText.text = "PLay";
+            this.gameObject.SetActive(false);
+        }
+        
     }
 
     private void OnEnable()

@@ -23,7 +23,7 @@ public class TileConfigs : ScriptableObject
         else return null;
     }
 
-    public TileConfig getConfig(int ID)
+    public TileConfig getConfig(string ID)
     {
         return configs.Find(c => c.ID == ID);
     }
@@ -37,11 +37,11 @@ public class TileConfigs : ScriptableObject
 [System.Serializable]
 public class TileConfig
 {
-    public int ID;
+    public string ID;
     public Texture2D img;
 
     public TileConfig()
     {
-        ID = 0;
+        ID = "";
     }
 }

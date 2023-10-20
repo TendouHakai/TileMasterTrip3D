@@ -72,6 +72,7 @@ public class HUBManger : MonoBehaviour
     [SerializeField] Sprite backgroundBuffNotZero;
 
     // Start is called before the first frame update
+
     void Start()
     {
         LoadData(SaveAndLoadManager.getInstance().LoadHUBData());
@@ -96,7 +97,7 @@ public class HUBManger : MonoBehaviour
     {
         if(isplayScene)
         {
-            if(isTiming)
+            if(isTiming && GameControler.getInstance().isPause ==false)
             {
                 if (time > 0)
                 {
@@ -140,6 +141,11 @@ public class HUBManger : MonoBehaviour
             star = data.Star;
             coin = data.Coin;
             level = data.Level;
+
+            if(data.buffs.Count != 0)
+            {
+                buffs = data.buffs;
+            }
         }
     }
 
@@ -230,6 +236,13 @@ public class HUBManger : MonoBehaviour
     {
         this.coin += coin;
         this.coinText.text = this.coin.ToString();   
+    }
+
+    // add level
+    public void addLevel(int level)
+    {
+        this.level += level;
+        this.LevelText.text = this.level.ToString();
     }
 
     // add buff

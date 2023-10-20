@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class LevelChestMenu : MonoBehaviour
     [SerializeField] Slider slider;
     [SerializeField] Image sliderColorImg;
     [SerializeField] TextMeshProUGUI textSlider;
+    [SerializeField] TextMeshProUGUI TextEndLevel;
 
     // color
     [SerializeField] Color colorFull;
@@ -47,12 +49,15 @@ public class LevelChestMenu : MonoBehaviour
         {
             sliderColorImg.color = colorNormal;
             textSlider.text = (currentLevel - startLevel).ToString() + "/" + (endLevel - startLevel).ToString();
+
+            TextEndLevel.text = "Pass " + endLevel.ToString() + " level to open"; 
         }
     }
 
     public void Claim()
     {
-        if(HUBManger.getInstance().level >= endLevel)
+        SoundManager.getInstance().PlaySound("ButtonClick");
+        if (HUBManger.getInstance().level >= endLevel)
         {
             currentConfig.isClaim = true;
             UIMainSceneManager.getInstance().RewardMenu.SetActive(true);
@@ -67,11 +72,13 @@ public class LevelChestMenu : MonoBehaviour
 
     public void OnContinueBtnClick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         this.gameObject.SetActive(false);
     }
 
     public void OnCloseBtnCLick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         this.gameObject.SetActive(false);
     }
 

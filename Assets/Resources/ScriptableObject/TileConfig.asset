@@ -13,7 +13,169 @@ MonoBehaviour:
   m_Name: TileConfig
   m_EditorClassIdentifier: 
   configs:
-  - ID: 0
+  - ID: blue_1
     img: {fileID: 2800000, guid: d55ef47040ba3cb419f8a6846db20003, type: 3}
-  - ID: 1
+  - ID: blue_2
     img: {fileID: 2800000, guid: 4d944ff59cdd8f74d9da19fb04106d55, type: 3}
+  - ID: blue_3
+    img: {fileID: 2800000, guid: ecb0f5d7d27e15e46bc7cdef9ad625cf, type: 3}
+  - ID: blue_4
+    img: {fileID: 2800000, guid: 4a4d22b3a5cd2fd4883c3de1e7eb3a79, type: 3}
+  - ID: blue_5
+    img: {fileID: 2800000, guid: df3fd811cba6f5b4da134f24812baa24, type: 3}
+  - ID: blue_6
+    img: {fileID: 2800000, guid: c7f6fc9d804210f4b85a42702770c942, type: 3}
+  - ID: blue_7
+    img: {fileID: 2800000, guid: d1f0bf870609338458dcfa4674ccbf92, type: 3}
+  - ID: blue_8
+    img: {fileID: 2800000, guid: 5ac52fa6573195543aa1f5eb9cbb6a99, type: 3}
+  - ID: blue_9
+    img: {fileID: 2800000, guid: 8b8cf0f77aefbd14eadd4a8c12d784f0, type: 3}
+  - ID: blue_10
+    img: {fileID: 2800000, guid: ed71a26b6f5d30749beff0987809593b, type: 3}
+  - ID: blue_11
+    img: {fileID: 2800000, guid: 7908fa86b8e1faf4692ddb48e827e654, type: 3}
+  - ID: blue_12
+    img: {fileID: 2800000, guid: 51a92433e7dbe4942a98b360b92d1d84, type: 3}
+  - ID: blue_13
+    img: {fileID: 2800000, guid: d38df79cb0a08a44caf097dbe19e4a29, type: 3}
+  - ID: pink_1
+    img: {fileID: 2800000, guid: ed4237a2f332b484898bde7f1ab36dd1, type: 3}
+  - ID: pink_2
+    img: {fileID: 2800000, guid: a7917e2aca3157b48805e69bb7c95c50, type: 3}
+  - ID: pink_3
+    img: {fileID: 2800000, guid: 700e0f7754ffb8949b18255bf104d007, type: 3}
+  - ID: pink_4
+    img: {fileID: 2800000, guid: 84171877a4608054abad9fae28473d5b, type: 3}
+  - ID: pink_5
+    img: {fileID: 2800000, guid: 4a9d7388ebb6f82488b9b76997a08639, type: 3}
+  - ID: pink_6
+    img: {fileID: 2800000, guid: 44f67189491c9b046af7d131068798ba, type: 3}
+  - ID: pink_7
+    img: {fileID: 2800000, guid: 3c70b8e96c9c71748847b91cb3f27d99, type: 3}
+  - ID: pink_8
+    img: {fileID: 2800000, guid: 7b874dca921754641a234e63e18daf76, type: 3}
+  - ID: pink_9
+    img: {fileID: 2800000, guid: 555881c88e2a95941acc3d009dd82598, type: 3}
+  - ID: pink_10
+    img: {fileID: 2800000, guid: eaba323abd6b8d14b9d8c93ab3340c0a, type: 3}
+  - ID: pink_11
+    img: {fileID: 2800000, guid: 131936bb5c07b204c8bf7ea36ebe1606, type: 3}
+  - ID: pink_12
+    img: {fileID: 2800000, guid: 6f2dbb8ae1963c846a2e550f227dd6aa, type: 3}
+  - ID: pink_13
+    img: {fileID: 2800000, guid: 161820787572087479fc93124b74c68b, type: 3}
+  - ID: pink_14
+    img: {fileID: 2800000, guid: ad7b181bfc12b8a4ca1011c500d415d7, type: 3}
+  - ID: pink_15
+    img: {fileID: 2800000, guid: ce602a8e8cd7a14498bea545bc82f1d0, type: 3}
+  - ID: pink_16
+    img: {fileID: 2800000, guid: c13c599d602819a47b48f414cd58897b, type: 3}
+  - ID: pink_17
+    img: {fileID: 2800000, guid: 672dcbf62ff28104782bb80f9df6100a, type: 3}
+  - ID: pink_18
+    img: {fileID: 2800000, guid: 43b659a7277c59a429e3d05ff4b124e6, type: 3}
+  - ID: pink_19
+    img: {fileID: 2800000, guid: e92bc639d2e49a64da23a22821f0e263, type: 3}
+  - ID: pink_20
+    img: {fileID: 2800000, guid: cb563593e7714bf498ff78c7ca69ffe6, type: 3}
+  - ID: pink_21
+    img: {fileID: 2800000, guid: 92302ca2fe7efb84287563e40da51f9b, type: 3}
+  - ID: purple_1
+    img: {fileID: 2800000, guid: 9120084f1bfff304bba915c0750ce134, type: 3}
+  - ID: purple_2
+    img: {fileID: 2800000, guid: 2e47d2e9ca4e692449e1db2942f85eaa, type: 3}
+  - ID: purple_3
+    img: {fileID: 2800000, guid: b9864f2107ba32f458c7a616cea9ba40, type: 3}
+  - ID: purple_4
+    img: {fileID: 2800000, guid: 140588c7e112f4e4e9406a2686624e50, type: 3}
+  - ID: purple_5
+    img: {fileID: 2800000, guid: 13698efaa04497a4c90c39e23fa1e1bf, type: 3}
+  - ID: purple_6
+    img: {fileID: 2800000, guid: e6b1dabd7ff9d9145903286557bf7e89, type: 3}
+  - ID: purple_7
+    img: {fileID: 2800000, guid: b2062c16a5920e947914cd51c6df1984, type: 3}
+  - ID: purple_8
+    img: {fileID: 2800000, guid: 34a25d83f6e737a4fb448e57e2fe4bfa, type: 3}
+  - ID: purple_9
+    img: {fileID: 2800000, guid: eb150543dcc3ae3449d30fcd667d59ac, type: 3}
+  - ID: purple_10
+    img: {fileID: 2800000, guid: ce3b8b08cdc174b4ba255230a9ecde47, type: 3}
+  - ID: purple_11
+    img: {fileID: 2800000, guid: 4627cce4aecfc4344afb420e46740c00, type: 3}
+  - ID: purple_12
+    img: {fileID: 2800000, guid: 1954215bae4241e429389da6483840f3, type: 3}
+  - ID: purple_13
+    img: {fileID: 2800000, guid: 9d1342b85c81b32498987fd972bc589f, type: 3}
+  - ID: red_1
+    img: {fileID: 2800000, guid: 363e494a911d48046958b7a7dbed6500, type: 3}
+  - ID: red_2
+    img: {fileID: 2800000, guid: a13689618341d8e499f916d01db531ab, type: 3}
+  - ID: red_3
+    img: {fileID: 2800000, guid: faed3d8e1f527d64db2f7d31f91debd3, type: 3}
+  - ID: red_4
+    img: {fileID: 2800000, guid: c2b8d096d4d8e14469bad2913d432256, type: 3}
+  - ID: red_5
+    img: {fileID: 2800000, guid: d9924e55ac3579a47894d38dca7185a6, type: 3}
+  - ID: red_6
+    img: {fileID: 2800000, guid: b75cb4841a5deff4e8ef955b23912ce1, type: 3}
+  - ID: red_7
+    img: {fileID: 2800000, guid: 3437141e09442fe4eabc4251b74e31d9, type: 3}
+  - ID: red_8
+    img: {fileID: 2800000, guid: fdaa1432721d46d4abd88603518fcaf0, type: 3}
+  - ID: red_9
+    img: {fileID: 2800000, guid: 90b147b9baeba1c438434d9ef59ffa23, type: 3}
+  - ID: red_10
+    img: {fileID: 2800000, guid: 27c1e5bc0323d7047bfbbe6de12a39c3, type: 3}
+  - ID: red_11
+    img: {fileID: 2800000, guid: 76815f224e7b3244d8b41b38e3505d78, type: 3}
+  - ID: white_1
+    img: {fileID: 2800000, guid: 70b5d19f469a571469e0b9ced7c5514b, type: 3}
+  - ID: white_2
+    img: {fileID: 2800000, guid: a6b4cd88f9bd50b49a05e090bd2f62b6, type: 3}
+  - ID: white_3
+    img: {fileID: 2800000, guid: 66aeeb388fb7b19409d219d156453d36, type: 3}
+  - ID: white_4
+    img: {fileID: 2800000, guid: 35432904573d1094c9c9b3ed456d6e1a, type: 3}
+  - ID: white_5
+    img: {fileID: 2800000, guid: 698ffcc34be8a5440818cf55114a28ef, type: 3}
+  - ID: white_6
+    img: {fileID: 2800000, guid: ad882daa41b3d2843b8f206f43ebaea2, type: 3}
+  - ID: white_7
+    img: {fileID: 2800000, guid: 32614031b046f27419ae18a521624698, type: 3}
+  - ID: white_8
+    img: {fileID: 2800000, guid: 196a1c1857e184c4097fb8ed7c0872c3, type: 3}
+  - ID: white_9
+    img: {fileID: 2800000, guid: 158e31dab331d1540be526b18a51dcb2, type: 3}
+  - ID: white_10
+    img: {fileID: 2800000, guid: 895e83c0860c8354fa0f82df57490f2e, type: 3}
+  - ID: white_11
+    img: {fileID: 2800000, guid: 6b2d17581652e8343a291a46c5739a86, type: 3}
+  - ID: white_12
+    img: {fileID: 2800000, guid: fd9b88b3c8a43ad4c9c7e615ebf81ff2, type: 3}
+  - ID: white_13
+    img: {fileID: 2800000, guid: 8a117bc43cde93a4981654ce3763d842, type: 3}
+  - ID: yellow_1
+    img: {fileID: 2800000, guid: f90cb5dcd3ebc4f48b5c96a4846d6eb7, type: 3}
+  - ID: yellow_2
+    img: {fileID: 2800000, guid: 5a960780d3aa4da4985280359aa2baee, type: 3}
+  - ID: yellow_3
+    img: {fileID: 2800000, guid: 38c08ad745087dd4a89c32539d5a39d4, type: 3}
+  - ID: yellow_4
+    img: {fileID: 2800000, guid: 0fd7b2f040a719449b319c9df30edfe1, type: 3}
+  - ID: yellow_5
+    img: {fileID: 2800000, guid: 81beafa14a86f9d4daafe13aae1e63ed, type: 3}
+  - ID: yellow_6
+    img: {fileID: 2800000, guid: 32c6dd231bf7a67438f5fa09452ad18a, type: 3}
+  - ID: yellow_7
+    img: {fileID: 2800000, guid: c50dae4b41183ca468b2af208ae5a7b8, type: 3}
+  - ID: yellow_8
+    img: {fileID: 2800000, guid: 469282b1a94d9734796e2a8ff275b065, type: 3}
+  - ID: yellow_9
+    img: {fileID: 2800000, guid: 25d027cbbf6b94a4b95589459075d37e, type: 3}
+  - ID: yellow_10
+    img: {fileID: 2800000, guid: 9df1f8b6324b869429ce5e2b56e790a5, type: 3}
+  - ID: yellow_11
+    img: {fileID: 2800000, guid: 2fcdb89013f76134fa4e20ef6a3b6eca, type: 3}
+  - ID: yellow_12
+    img: {fileID: 2800000, guid: b75de8dc6ea0a7c4d90b87f514acfb3b, type: 3}

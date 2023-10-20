@@ -6,7 +6,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     [Header("---------ID-----------")]
-    [SerializeField] public int ID;
+    [SerializeField] public string ID;
     [Header("---------Component-----------")]
     [SerializeField] MeshRenderer render;
     [SerializeField] public Rigidbody body;
@@ -89,7 +89,7 @@ public class Tile : MonoBehaviour
         if(isSelect)
         {
             Vector3 pos = this.transform.position;
-            pos.y = -0.5f;
+            pos.y = 0f;
             this.transform.position = pos;
         }
     }
@@ -126,6 +126,10 @@ public class Tile : MonoBehaviour
     {
         isSelect = true;
         outline.enabled = true;
+        Vector3 pos = this.transform.position;
+        pos.y = 0f;
+        this.transform.position = pos;
+
     }
 
     public void Unselect()

@@ -76,6 +76,7 @@ public class PackOpenMenu : MonoBehaviour
 
     public void OnClaimBtnClick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         ClaimPackMenu.SetActive(false);
         // clear display
         for(int i =0; i<TilesOpen.Count; i++)
@@ -89,6 +90,7 @@ public class PackOpenMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        GameControler.getInstance().Pause();
         ProcessMenu.SetActive(false);
         ClaimPackMenu.SetActive(false);
 

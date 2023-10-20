@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -59,7 +60,8 @@ public class StarChestMenu : MonoBehaviour
 
     public void Claim()
     {
-        if(currentConfig == null)
+        SoundManager.getInstance().PlaySound("ButtonClick");
+        if (currentConfig == null)
         {
             
         }
@@ -78,11 +80,13 @@ public class StarChestMenu : MonoBehaviour
 
     public void OnContinueBtnClick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         this.gameObject.SetActive(false);
     }
 
     public void OnCloseBtnCLick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         this.gameObject.SetActive(false);
     }
 

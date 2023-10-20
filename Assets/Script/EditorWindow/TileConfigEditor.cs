@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using static UnityEditor.Progress;
-
+#if UNITY_EDITOR
 public class TileConfigEditor : EditorWindow
 {
     public List<TileConfig> configs;
+    private Vector2 scrollPosition = Vector2.zero;
 
     [MenuItem("Window/GameData/TileConfig")]
     protected static void ShowWindow()
@@ -22,13 +22,24 @@ public class TileConfigEditor : EditorWindow
 
     public void OnGUI()
     {
+        // Begin the scroll view.
+        scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUILayout.Width(position.width), GUILayout.Height(position.height));
         GUILayout.BeginVertical();
         GUILayout.Label("List tile config: ");
+
+        
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("Num", GUILayout.Width(30));
+        GUILayout.Label("TileID", GUILayout.Width(100));
+        GUILayout.Label("Sprite", GUILayout.Width(80));
+        EditorGUILayout.EndHorizontal();
+        
         for (int row = 0; row < configs.Count; row++)
         {
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label((row + 1).ToString(), GUILayout.Width(30));
-            configs[row].ID = EditorGUILayout.IntField(configs[row].ID, GUILayout.Width(100));
+            configs[row].ID = EditorGUILayout.TextField(configs[row].ID, GUILayout.Width(100));
             configs[row].img = EditorGUILayout.ObjectField(configs[row].img, typeof(Texture2D), false, GUILayout.Width(80), GUILayout.Height(80)) as Texture2D;
 
             if (GUILayout.Button("X", GUILayout.Width(20)))
@@ -39,12 +50,20 @@ public class TileConfigEditor : EditorWindow
             EditorGUILayout.EndHorizontal();
             GUILayout.Space(10);
         }
-
+        EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Add Tile config", GUILayout.Width(100)))
         {
             configs.Add(new TileConfig());
         }
+
+        if (GUILayout.Button("Save", GUILayout.Width(100)))
+        {
+            EditorUtility.SetDirty(TileConfigs.getInstance());
+            AssetDatabase.SaveAssets();
+        }
+        EditorGUILayout.EndHorizontal();
         GUILayout.EndVertical();
+        EditorGUILayout.EndScrollView();
     }
 
     //private void HandleDragAndDrop(Texture2D texture)
@@ -78,3 +97,4 @@ public class TileConfigEditor : EditorWindow
     //    }
     //}
 }
+#endif

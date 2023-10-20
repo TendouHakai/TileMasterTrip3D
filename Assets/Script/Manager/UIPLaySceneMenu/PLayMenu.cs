@@ -28,5 +28,6 @@ public class PLayMenu : MonoBehaviour
     private void OnEnable()
     {
         LevelText.text = "LEVEL " + HUBManger.getInstance().level.ToString();
+        GameControler.getInstance().Pause();
     }
 }

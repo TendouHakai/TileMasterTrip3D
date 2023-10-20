@@ -23,8 +23,5 @@ MonoBehaviour:
     Name: buff Guide
     img: {fileID: 1132813108, guid: a90bdc109c7d55e40b368e712e61675b, type: 3}
   - ID: 3
-    Name: buff Add Time
-    img: {fileID: 0}
-  - ID: 4
     Name: buff Add Slot
     img: {fileID: 420681335, guid: a90bdc109c7d55e40b368e712e61675b, type: 3}

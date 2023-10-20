@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+#if UNITY_EDITOR
 public class EditorConfig : EditorWindow
 {
     protected GUIStyle tabStyleNormal;
@@ -55,3 +55,4 @@ public class EditorConfig : EditorWindow
         }
     }
 }
+#endif

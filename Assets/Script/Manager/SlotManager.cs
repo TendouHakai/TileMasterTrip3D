@@ -59,7 +59,16 @@ public class SlotManager : MonoBehaviour
     public void deleteChain()
     {
         int index = checkChain();
-        if (index == -1) return;
+        if (index == -1)
+        {
+            if (tiles.Count == n)
+            {
+                UIPlaySceneManager.getInstance().outOfSlotMenu.SetActive(true);
+            }
+            return;
+        }
+        else if (index == -2) return;
+
         SoundManager.getInstance().PlaySound("SlotRecycle");
         for (int i = 0; i < 3; i++)
         {
@@ -75,9 +84,14 @@ public class SlotManager : MonoBehaviour
         if(tiles.Count == 0) return -1;
         int index = 0;
         int count = 1;
+        int flag = 0;
         for (int i = 1; i < tiles.Count; i++)
         {
-            if (tiles[index].isOnSlot == false || tiles[i].isOnSlot == false) continue;
+            if (tiles[index].isOnSlot == false || tiles[i].isOnSlot == false)
+            {
+                flag = 1;
+                continue;
+            }
             else if (tiles[index].ID == tiles[i].ID)
             {
                 count++;
@@ -90,12 +104,16 @@ public class SlotManager : MonoBehaviour
             }
         }
 
-        return -1;
+        return flag == 0? -1: -2;
     }
 
     public void addTile(Tile tile)
     {
-        if (tiles.Count == n) return;
+        if (tiles.Count == n)
+        {
+            UIPlaySceneManager.getInstance().outOfSlotMenu.SetActive(true);
+            return;
+        }
         int i = 0;
         tile.isUpdateSlotManager = true;
         for(; i<tiles.Count; i++)
@@ -134,7 +152,7 @@ public class SlotManager : MonoBehaviour
     {
         for(int i =0; i<n; i++)
         {
-            tiles[tiles.Count - 1].MoveTo(new Vector3(Random.Range(-2.7f, 2.7f), 0f, Random.Range(-3.5f, 3.5f)), 20f, false);
+            tiles[tiles.Count - 1].MoveTo(new Vector3(Random.Range(-2.7f, 2.7f), 1f, Random.Range(-3.5f, 3.5f)), 20f, false);
             tiles.RemoveAt(tiles.Count - 1);
         }
     }
@@ -150,7 +168,7 @@ public class SlotManager : MonoBehaviour
     {
         if(tiles.Count == 0)
         {
-            SpawnManager.getInstance().addTileToSlot(-1, 3);
+            SpawnManager.getInstance().addTileToSlot("", 3);
             return;
         }
         int index = 0;

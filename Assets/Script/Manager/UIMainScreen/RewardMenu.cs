@@ -31,6 +31,7 @@ public class RewardMenu : MonoBehaviour
 
     public void OnClaimBtnClick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         for (int i = 0; i < rewards.Count; i++)
         {
             switch (rewards[i].IDRewardConfig)
@@ -39,13 +40,13 @@ public class RewardMenu : MonoBehaviour
                     HUBManger.getInstance().addCoin(rewards[i].SL);
                     break;
                 case 1:
-                    //HUBManger.getInstance().Bakc += rewards[i].SL;
+                    HUBManger.getInstance().addBuff(0, rewards[i].SL);
                     break;
                 case 2:
-                    //HUBManger.getInstance().coin += rewards[i].SL;
+                    HUBManger.getInstance().addBuff(1, rewards[i].SL);
                     break;
                 case 3:
-                    //HUBManger.getInstance().coin += rewards[i].SL;
+                    HUBManger.getInstance().addBuff(2, rewards[i].SL);
                     break;
                 case 4:
                     //HUBManger.getInstance().coin += rewards[i].SL;

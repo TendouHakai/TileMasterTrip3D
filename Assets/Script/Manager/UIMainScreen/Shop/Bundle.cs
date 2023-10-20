@@ -23,6 +23,7 @@ public class Bundle : MonoBehaviour
         {
             TagText.text = config.nameTag;
             PriceText.text = "$"+config.price.ToString();
+            Debug.Log(config.rewards.Count);
             for(int i =0; i<config.rewards.Count; i++)
             {
                 if (config.rewards[i].IDRewardConfig == 0)

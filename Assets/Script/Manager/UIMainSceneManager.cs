@@ -24,6 +24,8 @@ public class UIMainSceneManager : MonoBehaviour
     [SerializeField] public GameObject StarChestMenu;
     [SerializeField] public GameObject ShopMenu;
     [SerializeField] public GameObject RewardMenu;
+    [SerializeField] public GameObject AdsMenu;
+    [SerializeField] public GameObject SettingMenu;
 
     // Level Chest
 
@@ -35,15 +37,41 @@ public class UIMainSceneManager : MonoBehaviour
         StarChestMenu.SetActive(false);
         RewardMenu.SetActive(false);
         ShopMenu.SetActive(false);
+        AdsMenu.SetActive(false);
+        SettingMenu.SetActive(false);
     }
 
     public void OnPlayBtnClick()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
+        SaveAndLoadManager.getInstance().SaveHUBData();
+        SaveAndLoadManager.getInstance().SaveSoundData();
         SceneManager.LoadScene(1);
     }
 
     public void OnAddCoinCliCk()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         ShopMenu.SetActive(true);
+    }
+
+    // Ads
+    public void OpenAdsMenu()
+    {
+        SoundManager.getInstance().PlaySound("ButtonClick");
+        AdsMenu.SetActive(true);
+    }
+
+    public void CloseAdsMenu()
+    {
+        SoundManager.getInstance().PlaySound("ButtonClick");
+        AdsMenu.SetActive(false);
+    }
+
+    // Setting menu
+    public void OpenSettingMenu()
+    {
+        SoundManager.getInstance().PlaySound("ButtonClick");
+        SettingMenu.SetActive(true);
     }
 }

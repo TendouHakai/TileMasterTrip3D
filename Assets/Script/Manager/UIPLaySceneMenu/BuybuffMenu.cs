@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +24,9 @@ public class BuybuffMenu : MonoBehaviour
 
     public void OnCloseBtn()
     {
+        SoundManager.getInstance().PlaySound("ButtonClick");
         this.gameObject.SetActive(false);
+        GameControler.getInstance().Resume();
     }
 
     public void OnBuy500BtnClick()
@@ -45,6 +48,7 @@ public class BuybuffMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        GameControler.getInstance().Pause();
         config = BuffConfigs.getInstance().getConfig(buffID);
         buffNameText.text = "Add a" + config.Name;
         buffIcon.sprite = config.IconBuy;

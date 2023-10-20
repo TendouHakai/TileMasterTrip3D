@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
 
     LevelConfig currentLevel;
     List<Tile> tiles = new List<Tile>();
-    List<int> listTileID = new List<int>();
+    public List<string> listTileID = new List<string>();
 
     [SerializeField] Cowboy cowboy;
 
@@ -34,12 +34,20 @@ public class SpawnManager : MonoBehaviour
     public void loadLevel(int ID)
     {
         currentLevel = LevelConfigs.getInstance().getConfig(ID);
+        if (currentLevel == null)
+        {
+            UIPlaySceneManager.getInstance().WinMenu.SetActive(true);
+            GameControler.getInstance().Pause();
+            return;
+        }
         clear();
         // create list ID
         foreach (TileInLevel tile in currentLevel.tileInLevels)
         {
-            for(int i =0; i<tile.count; i++)
+            for(int i =0; i<tile.chain; i++)
             {
+                listTileID.Add(tile.IDTile);
+                listTileID.Add(tile.IDTile);
                 listTileID.Add(tile.IDTile);
             }
         }
@@ -65,15 +73,19 @@ public class SpawnManager : MonoBehaviour
         listTileID.Clear();
     }
 
-    public bool IsSpawn(int index)
+    public bool IsSpawn()
     {
-        if (index < listTileID.Count) return true;
+        //if (index < listTileID.Count) return true;
+        if (listTileID.Count>0) return true;
         return false;
     }
 
-    public int SpawnID(int index)
+    public string SpawnID()
     {
-        return listTileID[index];
+        int index = Random.RandomRange(0, listTileID.Count);
+        string id = listTileID[index];
+        listTileID.RemoveAt(index);
+        return id;
     }
     
     public void addTile(Tile tile)
@@ -86,18 +98,19 @@ public class SpawnManager : MonoBehaviour
         tiles.Remove(tile);
         if(tiles.Count <= 0)
         {
-            HUBManger.getInstance().level+=1;
+            HUBManger.getInstance().addLevel(1);
             UIPlaySceneManager.getInstance().PackMenu.SetActive(true);
             //UIPlaySceneManager.getInstance().congratulateMenu.SetActive(true);
         }
     }
 
     // add tile to Slot
-    public void addTileToSlot(int ID, int n)
+    public void addTileToSlot(string ID, int n)
     {
+        if (ID == "") ID = tiles[0].ID;
         for(int i =0; i<tiles.Count; i++)
         {
-            if (tiles[i].ID == ID || ID ==-1)
+            if (tiles[i].ID == ID || ID == "")
             {
                 if (!SlotManager.getInstance().isContain(tiles[i]))
                 {
