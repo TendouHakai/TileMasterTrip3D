@@ -17,6 +17,12 @@ public class TileConfigs : ScriptableObject
 
     [SerializeField] private List<TileConfig> configs = new List<TileConfig>();
 
+    public TileConfig getFirstConfig()
+    {
+        if(configs.Count != 0) return configs[0];
+        else return null;
+    }
+
     public TileConfig getConfig(int ID)
     {
         return configs.Find(c => c.ID == ID);
@@ -32,5 +38,5 @@ public class TileConfigs : ScriptableObject
 public class TileConfig
 {
     public int ID;
-    public Texture img;
+    public Texture2D img;
 }

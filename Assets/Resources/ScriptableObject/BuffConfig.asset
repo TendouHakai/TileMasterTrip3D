@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c1d717ecc7e984ebef91aa5136d3c4, type: 3}
+  m_Name: BuffConfig
+  m_EditorClassIdentifier: 
+  configs:
+  - ID: 0
+    Name: buff Back
+    LevelOpen: 0
+    Icon: {fileID: 2125841280, guid: a90bdc109c7d55e40b368e712e61675b, type: 3}
+    IconBuy: {fileID: 2125841280, guid: a90bdc109c7d55e40b368e712e61675b, type: 3}
+    Description: 
+  - ID: 1
+    Name: buff Guide
+    LevelOpen: 0
+    Icon: {fileID: -564434270, guid: a90bdc109c7d55e40b368e712e61675b, type: 3}
+    IconBuy: {fileID: -564434270, guid: a90bdc109c7d55e40b368e712e61675b, type: 3}
+    Description: 
+  - ID: 2
+    Name: buff Add a slot
+    LevelOpen: 0
+    Icon: {fileID: 1863672374, guid: a90bdc109c7d55e40b368e712e61675b, type: 3}
+    IconBuy: {fileID: -939630090, guid: a90bdc109c7d55e40b368e712e61675b, type: 3}
+    Description: 
+  - ID: 3
+    Name: buff 15
+    LevelOpen: 15
+    Icon: {fileID: 0}
+    IconBuy: {fileID: 0}
+    Description: 
+  - ID: 4
+    Name: buff 20
+    LevelOpen: 20
+    Icon: {fileID: 0}
+    IconBuy: {fileID: 0}
+    Description: 

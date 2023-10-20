@@ -151,6 +151,7 @@ public class SlotManager : MonoBehaviour
         if(tiles.Count == 0)
         {
             SpawnManager.getInstance().addTileToSlot(-1, 3);
+            return;
         }
         int index = 0;
         bool flag = false;

@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
 
         //reset
         HUBManger.getInstance().starInLevel = 0;
-        HUBManger.getInstance().startTime();
+        HUBManger.getInstance().startTime(currentLevel.Time);
         SlotManager.getInstance().resetSlot();  
         
 
@@ -102,7 +102,7 @@ public class SpawnManager : MonoBehaviour
                 if (!SlotManager.getInstance().isContain(tiles[i]))
                 {
                     SlotManager.getInstance().addTile(tiles[i]);
-                    n--;
+                    --n;
                 }
             }
             if (n <= 0) return;

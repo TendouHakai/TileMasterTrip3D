@@ -15,6 +15,7 @@ MonoBehaviour:
   configs:
   - ID: 1
     Name: Map01
+    Time: 400
     tileInLevels:
     - IDTile: 0
       count: 3
@@ -22,6 +23,7 @@ MonoBehaviour:
       count: 3
   - ID: 2
     Name: Map02
+    Time: 500
     tileInLevels:
     - IDTile: 0
       count: 6

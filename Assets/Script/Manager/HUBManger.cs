@@ -5,6 +5,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class buffInHUB
+{
+    public int buffID;
+    public int SL;
+}
+
 public class HUBManger : MonoBehaviour
 {
     private static HUBManger instance;
@@ -30,15 +37,11 @@ public class HUBManger : MonoBehaviour
     [SerializeField] public int starInLevel = 0;
     [SerializeField] public int coin = 0;
     [SerializeField] public float time = 900;
-    [SerializeField] public float TIME_MAX = 900;
     [SerializeField] public int level = 1;
     [SerializeField] int combo = 0;
 
-    // buff
-    [SerializeField] public int buffBack;
-    [SerializeField] public int buffGuide;
-    [SerializeField] public int buffAddTime;
-    [SerializeField] public int buffAddSlot;
+    [SerializeField] public List<buffInHUB> buffs = new List<buffInHUB>();
+    public Subject buffSubject = new Subject();
 
     // time combo
     float timeComboStart = 0f;
@@ -55,10 +58,18 @@ public class HUBManger : MonoBehaviour
     [SerializeField] TextMeshProUGUI LevelText;
     [SerializeField] Slider slider;
     [SerializeField] TextMeshProUGUI ComboText;
+    [SerializeField] Image BackgroundBack;
+    [SerializeField] TextMeshProUGUI BackText;
+    [SerializeField] Image BackgroundGuide;
+    [SerializeField] TextMeshProUGUI GuideText;
 
     [Header("---------Frefabs-----------")]
     [SerializeField] Star starFrefabs;
     [SerializeField] RectTransform target;
+
+    [Header("---------Sprite------------")]
+    [SerializeField] Sprite backgroundBuffZero;
+    [SerializeField] Sprite backgroundBuffNotZero;
 
     // Start is called before the first frame update
     void Start()
@@ -70,8 +81,6 @@ public class HUBManger : MonoBehaviour
             TimeText.text = time.ToString();
             LevelText.text = "Level" + level.ToString();
             slider.gameObject.SetActive(false);
-
-            TIME_MAX = time;
         }
         else
         {
@@ -210,9 +219,9 @@ public class HUBManger : MonoBehaviour
         isTiming = true;
     }
 
-    public void startTime()
+    public void startTime(int Time)
     {
-        time = TIME_MAX;
+        time = Time;
         isTiming = true;
     }
 
@@ -221,5 +230,17 @@ public class HUBManger : MonoBehaviour
     {
         this.coin += coin;
         this.coinText.text = this.coin.ToString();   
+    }
+
+    // add buff
+    public int getSLbuff(int ID)
+    {
+        return buffs.Find(c => c.buffID == ID).SL;
+    }
+
+    public void addBuff(int buffID, int SL)
+    {
+        buffs.Find(c => c.buffID == buffID).SL += SL;
+        buffSubject.Notify();
     }
 }
