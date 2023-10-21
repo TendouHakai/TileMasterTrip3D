@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,8 @@ public class UIMainSceneManager : MonoBehaviour
     [SerializeField] public GameObject RewardMenu;
     [SerializeField] public GameObject AdsMenu;
     [SerializeField] public GameObject SettingMenu;
+
+    [SerializeField] public TextMeshProUGUI text;
 
     // Level Chest
 

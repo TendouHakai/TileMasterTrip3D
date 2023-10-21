@@ -95,6 +95,8 @@ MonoBehaviour:
   IDCoinConfig: 0
   coinText: {fileID: 1153654895584268344}
   priceText: {fileID: 1153654895334769838}
+  width: 1125
+  height: 2436
 --- !u!1 &1153654894507760946
 GameObject:
   m_ObjectHideFlags: 0

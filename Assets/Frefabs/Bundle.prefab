@@ -311,6 +311,8 @@ MonoBehaviour:
   PriceText: {fileID: 1150824334069344875}
   grid: {fileID: 1150824333237077326}
   RewardsFrefab: {fileID: 499300455, guid: ff232ad46bb576e42ba23720bd35f652, type: 3}
+  width: 1125
+  height: 2436
 --- !u!1 &1150824332958932481
 GameObject:
   m_ObjectHideFlags: 0

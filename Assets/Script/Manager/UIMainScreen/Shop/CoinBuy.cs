@@ -19,6 +19,7 @@ public class CoinBuy : MonoBehaviour
             coinText.text = config.coin.ToString();
             priceText.text = config.price.ToString();
         }
+        transform.localScale = new Vector3(1, 1, 1);
     }
 
 }
