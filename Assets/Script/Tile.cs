@@ -103,7 +103,7 @@ public class Tile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag == "Background")
+        if(collision.transform.tag == "Background" || collision.transform.tag == "Tile")
         {
             StartCoroutine(StartFaceup());
         }
